@@ -2,59 +2,71 @@ import { Component } from '@angular/core';
 import { CardsService } from '../services/cards.service';
 
 @Component({
-    selector: 'app-cards',
-    template: `
-    <div *ngFor="let card of cards; let i = index" (click)="expand(i)">
-        <h3>{{card.name}}</h3>
-        <div *ngIf="expanded === i">
-            <p>{{card.text}}</p>
-            <p>Cardclass: {{card.cardClass}}</p>
-            <p>Artist: {{card.artist}}</p>
-            <p>Collectable: {{card.collectable}}</p>
-            <p>Cost: {{card.cost}}</p>
-            <p>Flavor: {{card.flavor}}</p>
-            <p>Playerclass: {{card.playerClass}}</p>
-            <p>Rarity: {{card.rarity}}</p>
-            <p>Type: {{card.type}}</p>
-            
-        </div>
-        <br/>
-    </div>`,
-    providers: [CardsService]
+  selector: 'app-cards',
+  template: `
+  <div class="card-display">
+  <div *ngFor="let card of individual_cards; let i = index" (click)="expand(i)">
+    <h3>{{card.name}}</h3>
+    <div *ngIf="expanded === i">
+      <p> In set: {{card.cardSet}} </p>
+      <p> Type: {{card.type}} </p>
+      <div *ngIf="card.type === 'Minion'">
+        <p> Attack: {{card.attack}}, Health: {{card.health}}</p>
+        <p *ngIf="card.race"> Race: {{card.race}} </p>
+      </div>
+      <p> Text: {{card.text}} </p>
+      <p> Flavor: {{card.flavor}} </p>
+      <p> Artist: {{card.artist}} </p>
+      <p> Rarity: {{card.rarity}} </p>
+      <img src="{{card.img}}" />
+    </div>
+    <br/>
+  </div>
+  </div>`,
+  providers: [CardsService]
 })
 
 export class CardsComponent {
+  individual_cards: Card[];
+  expanded: number;
 
-    cards: Card[];
-    expanded: number;
+  constructor(private cardsService: CardsService) {
+    let tmp = [];
+    this.cardsService.getPosts().subscribe(cards => {
+      for (let cardSet in cards){
+        tmp.push(...cards[cardSet])
+      }
+    });
+    this.individual_cards = tmp;
+    console.log(this.individual_cards);
+  }
 
-    constructor(private cardsService: CardsService) {
-        this.cardsService.getPosts().subscribe(cards => {
-            this.cards = cards;
-        });
+  expand(index: number) {
+    // If already expanded: Collapse
+    if (this.expanded === index) {
+        this.expanded = -1;
+    // Else: expand
+    } else {
+        this.expanded = index;
     }
-
-    expand(index: number) {
-        // If already expanded: Collapse
-        if (this.expanded === index) {
-            this.expanded = -1;
-        // Else: expand
-        } else {
-            this.expanded = index;
-        }
-    }
-
+  }
 }
 
 interface Card {
-    name: string;
-    text: string;
-    cardClass: string;
-    artist: string;
-    collectible: string;
-    cost: string;
-    flavor: string;
-    playerClass: string;
-    rarity: string;
-    type: string;
+  attack: number,
+  cardSet: string,
+  cost: number,
+  faction: string,
+  health: number,
+  img: string,
+  imgGold: string,
+  name: string,
+  playerClass: string,
+  race: string,
+  rarity: string,
+  type: string,
+  text: string,
+  flavor: string,
+  mechanics: object,
+  artist: string,
 }

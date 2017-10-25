@@ -1,0 +1,25 @@
+@mixin blur($px){
+  -webkit-filter: blur($px);
+  -moz-filter: blur($px);
+  -o-filter: blur($px);
+  -ms-filter: blur($px);
+  filter: blur($px);
+}
+.card-img {
+  cursor: pointer;
+  &:hover {
+  }
+  // transition: 0.15s filter linear;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  transition: 1s all linear;
+}
+
+.card-display {
+  transition: 1s all linear;
+}

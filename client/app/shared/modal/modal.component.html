@@ -1,0 +1,37 @@
+<div *ngIf="message.body" class="{{message.type}} alert alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h1>{{message.body.name}}</h1>
+  <hr/>
+  <i>{{message.body.flavor}}</i>
+  <br/>
+  <p *ngIf="message.body.type === 'Minion'"> He attac {{message.body.attack}},
+    he protecc {{message.body.health}}
+    <span *ngIf="message.body.race">
+      ...and is {{message.body.race}}</span>
+  </p>
+  <div>
+
+  </div>
+
+</div>
+
+
+<!-- interface Card {
+  attack: number,
+  cardSet: string,
+  cost: number,
+  faction: string,
+  health: number,
+  img: string,
+  imgGold: string,
+  name: string,
+  playerClass: string,
+  race: string,
+  rarity: string,
+  type: string,
+  flavor: string,
+  mechanics: object,
+  artist: string,
+} -->

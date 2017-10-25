@@ -1,0 +1,19 @@
+<div class="card-container">
+  <div class="card-display"
+  *ngFor="let card of individual_cards; let i = index" (click)="expand(i,card)">
+    <img class="card-img" src="{{card.imgGold}}" />
+    <div *ngIf="expanded === i">
+      <app-modal [message]="modal.message"></app-modal>
+      <!-- <h2>{{card.name}}</h2>
+      <p> In set: {{card.cardSet}} </p>
+      <p> Type: {{card.type}} </p>
+      <div *ngIf="card.type === 'Minion'">
+        <h1> He attac {{card.attack}}, he protecc {{card.health}}</h1>
+        <p *ngIf="card.race"> Race: {{card.race}} </p>
+      </div>
+      <p> Flavor: {{card.flavor}} </p>
+      <p> Artist: {{card.artist}} </p>
+      <p> Rarity: {{card.rarity}} </p> -->
+    </div>
+  </div>
+</div>

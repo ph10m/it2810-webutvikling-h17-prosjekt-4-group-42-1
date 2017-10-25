@@ -9,7 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {CardsService} from './services/cards.service';
 import {CardsComponent} from './cards/cards.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import {CardsComponent} from './cards/cards.component';
   ],
   imports: [
     RoutingModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [
     CatService, CardsService

@@ -19,10 +19,14 @@ export class CardsService {
     headers.append('X-Mashape-Key', '8H1hVFLvFGmshgsDDQdruQsAtnAHp1xWKTrjsnGd6yrYXU5X7N');
     let opts = new RequestOptions();
     opts.headers = headers;
-    var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards?cost=7'
-    let attack = '?attack=2'
-    let health = '?health=5'
-    let cost = '?cost=8'
+    var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards?'
+    let attack = '&attack=10'
+    let health = '&health=10'
+    let cost = '&cost=10'
+    let type = '&type=spell'
+    let collectible = '&collectible=1'
+
+    url += cost + collectible;
 
 
     return this.http.get(url, opts).map(

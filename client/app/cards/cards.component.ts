@@ -1,28 +1,11 @@
 import { Component } from '@angular/core';
 import { CardsService } from '../services/cards.service';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-cards',
-  template: `
-  <div class="card-display">
-  <div *ngFor="let card of individual_cards; let i = index" (click)="expand(i)">
-    <h3>{{card.name}}</h3>
-    <div *ngIf="expanded === i">
-      <p> In set: {{card.cardSet}} </p>
-      <p> Type: {{card.type}} </p>
-      <div *ngIf="card.type === 'Minion'">
-        <p> Attack: {{card.attack}}, Health: {{card.health}}</p>
-        <p *ngIf="card.race"> Race: {{card.race}} </p>
-      </div>
-      <p> Text: {{card.text}} </p>
-      <p> Flavor: {{card.flavor}} </p>
-      <p> Artist: {{card.artist}} </p>
-      <p> Rarity: {{card.rarity}} </p>
-      <img src="{{card.img}}" />
-    </div>
-    <br/>
-  </div>
-  </div>`,
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.scss'],
   providers: [CardsService]
 })
 
@@ -30,7 +13,8 @@ export class CardsComponent {
   individual_cards: Card[];
   expanded: number;
 
-  constructor(private cardsService: CardsService) {
+  constructor(private cardsService: CardsService,
+              public modal: ModalComponent) {
     let tmp = [];
     this.cardsService.getPosts().subscribe(cards => {
       for (let cardSet in cards){
@@ -38,16 +22,16 @@ export class CardsComponent {
       }
     });
     this.individual_cards = tmp;
-    console.log(this.individual_cards);
   }
 
-  expand(index: number) {
+  expand(index: number, card: Card) {
     // If already expanded: Collapse
     if (this.expanded === index) {
         this.expanded = -1;
     // Else: expand
     } else {
         this.expanded = index;
+        this.modal.setMessage(card, card.rarity);
     }
   }
 }
@@ -65,7 +49,6 @@ interface Card {
   race: string,
   rarity: string,
   type: string,
-  text: string,
   flavor: string,
   mechanics: object,
   artist: string,

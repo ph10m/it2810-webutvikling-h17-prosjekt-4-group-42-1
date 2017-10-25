@@ -13,12 +13,6 @@ export class UserService {
   constructor(private http: Http) { }
 
   register(user): Observable<any> {
-    console.log(user)
-    if (!user.hasOwnProperty('role')) {
-      alert('oi m8')
-      user.role = 'user'
-    }
-    console.log(user)
     return this.http.post('/api/user', JSON.stringify(user), this.options);
   }
 

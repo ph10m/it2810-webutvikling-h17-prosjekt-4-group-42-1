@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       username: this.username,
       email: this.email,
       password: this.password,
-      role: "user"
+      role: "admin"
     });
   }
 

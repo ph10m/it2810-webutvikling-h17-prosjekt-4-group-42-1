@@ -16,7 +16,7 @@ export class CardsComponent {
   constructor(private cardsService: CardsService,
               public modal: ModalComponent) {
     let tmp = [];
-    this.cardsService.getPosts().subscribe(cards => {
+    this.cardsService.getPosts('&attack=0').subscribe(cards => {
       for (let cardSet in cards){
         tmp.push(...cards[cardSet])
       }

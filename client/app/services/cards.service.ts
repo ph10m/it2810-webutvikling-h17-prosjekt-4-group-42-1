@@ -9,7 +9,7 @@ export class CardsService {
       console.log('postser');
   }
 
-  getPosts() {
+  getPosts(filter) {
     // return unirest.get("")
     // .header("X-Mashape-Key", "8H1hVFLvFGmshgsDDQdruQsAtnAHp1xWKTrjsnGd6yrYXU5X7N")
     // .end(function (result) {
@@ -17,16 +17,16 @@ export class CardsService {
     // });
     let headers = new Headers();
     headers.append('X-Mashape-Key', '8H1hVFLvFGmshgsDDQdruQsAtnAHp1xWKTrjsnGd6yrYXU5X7N');
-    let opts = new RequestOptions();
+    const opts = new RequestOptions();
     opts.headers = headers;
-    var url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards?'
-    let attack = '&attack=10'
-    let health = '&health=10'
-    let cost = '&cost=10'
-    let type = '&type=spell'
-    let collectible = '&collectible=1'
+    let url = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards?';
+    // const attack = '&attack=10';
+    // const health = '&health=10';
+    // const cost = '&cost=5';
+    // const type = '&type=Spell';
+    const collectible = '&collectible=1';
 
-    url += cost + collectible;
+    url += filter + collectible;
 
 
     return this.http.get(url, opts).map(

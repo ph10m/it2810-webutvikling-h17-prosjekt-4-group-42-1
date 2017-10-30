@@ -1,19 +1,77 @@
 <div class="card-container">
-  <div class="card-display"
-  *ngFor="let card of individual_cards; let i = index" (click)="expand(i,card)">
-    <img class="card-img" src="{{card.imgGold}}" />
-    <div *ngIf="expanded === i">
-      <app-modal [message]="modal.message"></app-modal>
-      <!-- <h2>{{card.name}}</h2>
-      <p> In set: {{card.cardSet}} </p>
-      <p> Type: {{card.type}} </p>
-      <div *ngIf="card.type === 'Minion'">
-        <h1> He attac {{card.attack}}, he protecc {{card.health}}</h1>
-        <p *ngIf="card.race"> Race: {{card.race}} </p>
+  <!-- START FILTER -->
+  <div class="card-filter">
+    <div class="filter-label">
+      <label>Attack: </label>
+    </div>
+    <div class="filter-slider">
+      <mat-slider min="1" max="12" step="1" value="2"></mat-slider>
+    </div>
+    <div class="filter-label">
+      <label>Health: </label>
+    </div>
+    <div class="filter-slider">
+      <mat-slider min="1" max="12" step="1" value="2"></mat-slider>
+    </div>
+    <div class="filter-label">
+      <label>Mana: </label>
+    </div>
+    <div class="filter-slider">
+      <mat-slider min="1" max="12" step="1" value="2"></mat-slider>
+    </div>
+    <div class="filter-label">
+      <label>Class: </label>
+    </div>
+    <div class="filter-checkboxes">
+      <mat-checkbox>Druid</mat-checkbox>
+      <mat-checkbox>Hunter</mat-checkbox>
+      <mat-checkbox>Mage</mat-checkbox>
+      <mat-checkbox>Paladin</mat-checkbox>
+      <mat-checkbox>Priest</mat-checkbox>
+      <mat-checkbox>Rogue</mat-checkbox>
+      <mat-checkbox>Shaman</mat-checkbox>
+      <mat-checkbox>Warlock</mat-checkbox>
+      <mat-checkbox>Warrior</mat-checkbox>
+      <mat-checkbox>Neutral</mat-checkbox>
+    </div>
+    <div class="filter-label">
+      <label>Type: </label>
+    </div>
+    <div class="filter-checkboxes">
+      <mat-checkbox>Minion</mat-checkbox>
+      <mat-checkbox>Spell</mat-checkbox>
+      <mat-checkbox>Weapon</mat-checkbox>
+      <mat-checkbox>Hero</mat-checkbox>
+    </div>
+    <div class="filter-label">
+      <label>Rarity: </label>
+    </div>
+    <div class="filter-checkboxes">
+      <mat-checkbox>Common</mat-checkbox>
+      <mat-checkbox>Uncommon</mat-checkbox>
+      <mat-checkbox>Rare</mat-checkbox>
+      <mat-checkbox>Epic</mat-checkbox>
+      <mat-checkbox>Legendary</mat-checkbox>
+    </div>
+  </div>
+  <!-- END FILTER -->
+  <div class="card-list">
+    <div class="card-display"
+    *ngFor="let card of individual_cards; let i = index" (click)="expand(i,card)">
+      <img class="card-img" src="{{card.img}}" />
+      <div *ngIf="expanded === i">
+        <app-modal [message]="modal.message"></app-modal>
+        <!-- <h2>{{card.name}}</h2>
+        <p> In set: {{card.cardSet}} </p>
+        <p> Type: {{card.type}} </p>
+        <div *ngIf="card.type === 'Minion'">
+          <h1> He attac {{card.attack}}, he protecc {{card.health}}</h1>
+          <p *ngIf="card.race"> Race: {{card.race}} </p>
+        </div>
+        <p> Flavor: {{card.flavor}} </p>
+        <p> Artist: {{card.artist}} </p>
+        <p> Rarity: {{card.rarity}} </p> -->
       </div>
-      <p> Flavor: {{card.flavor}} </p>
-      <p> Artist: {{card.artist}} </p>
-      <p> Rarity: {{card.rarity}} </p> -->
     </div>
   </div>
 </div>

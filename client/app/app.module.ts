@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {CardsService} from './services/cards.service';
 import {CardsComponent} from './cards/cards.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     RoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatCheckboxModule
   ],
   providers: [
     CatService, CardsService

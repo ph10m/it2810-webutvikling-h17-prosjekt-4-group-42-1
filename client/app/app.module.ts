@@ -16,6 +16,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CardsService } from './services/cards.service';
+import { CardsComponent } from './cards/cards.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -27,18 +31,24 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LogoutComponent,
     AccountComponent,
     AdminComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CardsComponent
   ],
   imports: [
     RoutingModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatCheckboxModule
   ],
   providers: [
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
     CatService,
-    UserService
+    UserService,
+    CatService,
+    CardsService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

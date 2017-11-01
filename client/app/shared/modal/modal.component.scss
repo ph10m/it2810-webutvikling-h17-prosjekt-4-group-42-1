@@ -1,0 +1,43 @@
+@keyframes showModal {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@mixin alert {
+	z-index: 999;
+	position: fixed;
+	bottom: 50%;
+	left: 25%;
+	width: 50%;
+	height: 500px auto;
+	animation: showModal 0.3s ease;
+
+	button {
+		// color: red;
+	}
+}
+
+.Legendary {
+	@include alert;
+	background-color: orange;
+	color: black;
+}
+.Epic {
+	@include alert;
+	background-color: purple;
+	color: white;
+}
+.Rare {
+	@include alert;
+	background-color: blue;
+	color: white;
+}
+.Free {
+	@include alert;
+ 	background-color: lightGray;
+	color: black;
+}
+.Common {
+	@include alert;
+ 	background-color: lightGray;
+	color: black;
+}

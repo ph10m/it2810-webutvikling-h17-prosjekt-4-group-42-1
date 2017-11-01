@@ -2,10 +2,6 @@
 *.swp
 *.swo
 package-lock.json
-<<<<<<< HEAD
-=======
-
->>>>>>> feat-filter-cards
 # compiled output
 /dist
 /tmp

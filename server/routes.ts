@@ -1,15 +1,17 @@
 import * as express from 'express';
 
-import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
+import CatCtrl from './controllers/cat';
+import CardCtrl from './controllers/card';
 import Cat from './models/cat';
-import User from './models/user';
+import Card from './models/card';
 
 export default function setRoutes(app) {
 
   const router = express.Router();
 
   const catCtrl = new CatCtrl();
+  const cardCtrl = new CardCtrl();
   const userCtrl = new UserCtrl();
 
   // Cats
@@ -28,6 +30,10 @@ export default function setRoutes(app) {
   router.route('/user/:id').get(userCtrl.get);
   router.route('/user/:id').put(userCtrl.update);
   router.route('/user/:id').delete(userCtrl.delete);
+  // Cards
+  router.route('/cards').get(cardCtrl.getAll);
+  router.route('/cards/count').get(catCtrl.count);
+  router.route('/card?').get(cardCtrl.getByQuery);
 
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);

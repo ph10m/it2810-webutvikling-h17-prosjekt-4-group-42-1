@@ -34,5 +34,4 @@ export class CatService {
   deleteCat(cat): Observable<any> {
     return this.http.delete(`/api/cat/${cat._id}`, this.options);
   }
-
 }

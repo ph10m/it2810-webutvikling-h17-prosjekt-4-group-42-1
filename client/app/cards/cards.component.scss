@@ -14,40 +14,32 @@
 
 .card-container {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+  align-items: stretch;
   transition: 1s all linear;
 }
 
 .card-list {
+  flex-grow: 2;
+  width: 20%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.card-display {
-  transition: 1s all linear;
-}
-
-//Might be useful if we are to move the card filtering to its own component.
-// START CARD FILTERING CSS
-
 .card-filter {
-  border: 5px black;
-  width: 15em;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.filter-label {
+.label {
   height: 2em;
 }
 
-.filter-slider {
+mat-slider {
   height: 2em;
-}
-
-.mat-slider {
   width: 100%;
 }
 

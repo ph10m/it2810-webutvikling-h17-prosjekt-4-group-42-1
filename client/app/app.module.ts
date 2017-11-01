@@ -47,7 +47,6 @@ import { MatSliderModule, MatCheckboxModule } from '@angular/material';
     AuthGuardAdmin,
     CatService,
     UserService,
-    CatService,
     CardsService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

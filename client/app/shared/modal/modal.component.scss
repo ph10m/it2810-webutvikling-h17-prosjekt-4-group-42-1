@@ -5,8 +5,8 @@
 @mixin alert {
 	z-index: 999;
 	position: fixed;
-	bottom: 50%;
 	left: 25%;
+  top: 20%;
 	width: 50%;
 	height: 500px auto;
 	animation: showModal 0.3s ease;
@@ -16,28 +16,29 @@
 	}
 }
 
+.cardbox {
+  @include alert;
+  background-color: lightGray;
+  color: black;
+}
+
 .Legendary {
-	@include alert;
 	background-color: orange;
 	color: black;
 }
 .Epic {
-	@include alert;
 	background-color: purple;
 	color: white;
 }
 .Rare {
-	@include alert;
 	background-color: blue;
 	color: white;
 }
 .Free {
-	@include alert;
  	background-color: lightGray;
 	color: black;
 }
 .Common {
-	@include alert;
  	background-color: lightGray;
 	color: black;
 }

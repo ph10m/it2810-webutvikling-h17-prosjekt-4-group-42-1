@@ -1,0 +1,69 @@
+.hero-selection{
+  width: 100%;
+  display: flex;
+  // margin-left: 4px;
+}
+.section {
+	height: 40vh;
+	width: 11.3%; //100/9 = 11.11, 11.3 was a better fit.
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+	// cursor: pointer;
+	transition: all ease-out 0.4s;
+
+  font-size: 30px;
+  color: white;
+}
+
+.active {
+	width: 30%;
+  .glass {
+    opacity: 0;
+  }
+}
+
+.glass {
+  position: relative;
+	width: 100vw;
+	height: 100vh;
+	z-index: 20;
+	transition: all ease-out 0.2s;
+
+  &:hover {
+    opacity: 0;
+  }
+
+  &.active{
+    opacity: 0;
+  }
+}
+
+.garrosh { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370371/Garrosh_nbxdur.jpg"); }
+.thrall { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370372/Thrall_owy4ru.jpg"); }
+.valeera { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370373/Valeera_iqqknc.jpg"); }
+.uther { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370372/Uther_ohkcts.jpg"); }
+.rexxar { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370371/Rexxar_cxewei.jpg"); }
+.malfurion { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370371/Malfurion_oapv6w.jpg"); }
+.guldan { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370371/Gul_dan_vognmz.jpg"); }
+.jaina { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370372/Jaina_yddmnr.jpg"); }
+.anduin { background-image: url("https://res.cloudinary.com/aca/image/upload/v1490370372/Anduin_iu49n1.jpg"); }
+
+$garrosh: rgba(199,156,110,0.35);
+$thrall: rgba(0, 112, 222, 0.35);
+$valeera: rgba(255, 245, 105, 0.35);
+$uther: rgba(245, 140, 186, 0.35);
+$rexxar: rgba(171, 212, 115, 0.35);
+$malfurion: rgba(255, 125, 10, 0.35);
+$guldan: rgba(148, 130, 201, 0.35);
+$jaina: rgba(105, 204, 240, 0.35);
+$anduin: rgba(255, 255, 255, 0.35);
+.garrosh .glass { background: $garrosh; }
+.thrall .glass { background: $thrall; }
+.valeera .glass { background: $valeera; }
+.uther .glass { background: $uther; }
+.rexxar .glass { background: $rexxar; }
+.malfurion .glass { background: $malfurion; }
+.guldan .glass { background: $guldan; }
+.jaina .glass { background: $jaina; }
+.anduin .glass { background: $anduin; }

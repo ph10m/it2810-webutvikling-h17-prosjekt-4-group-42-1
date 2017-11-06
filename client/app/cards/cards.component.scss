@@ -5,15 +5,15 @@
   -ms-filter: blur($px);
   filter: blur($px);
 }
-.card-img {
-  cursor: pointer;
-  &:hover {
-  }
-  // transition: 0.15s filter linear;
-}
-
+// .card-img {
+//   cursor: pointer;
+//   &:hover {
+//   }
+//   // transition: 0.15s filter linear;
+// }
 .card-container {
   display: flex;
+  background: rgba(255,255,255,0.2);
   flex-flow: row wrap;
   align-items: stretch;
   transition: 1s all linear;

@@ -2,12 +2,48 @@
 
 <app-toast [message]="toast.message"></app-toast>
 
+<div (click)="selectedHero($event)" class="hero-selection" #heroes>
+  <div class="section garrosh">
+  	<div class="glass garrosh"></div>
+  </div>
+  <div class="section thrall">
+  	<div class="glass thrall"></div>
+  </div>
+  <div class="section valeera">
+  	<div class="glass valeera"></div>
+  </div>
+  <div class="section uther">
+  	<div class="glass uther"></div>
+  </div>
+  <div class="section rexxar">
+  	<div class="glass rexxar"></div>
+  </div>
+  <div class="section malfurion">
+  	<div class="glass malfurion"></div>
+  </div>
+  <div class="section guldan">
+  	<div class="glass guldan"></div>
+  </div>
+  <div class="section jaina">
+  	<div class="glass jaina"></div>
+  </div>
+  <div class="section anduin">
+  	<div class="glass anduin"></div>
+  </div>
+</div>
+
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Account settings</h4>
+  <h4 class="card-header">
+    Welcome,
+    <span *ngIf="activeHero; else introContent" class="text-capitalize">{{activeHero}}</span>
+    <ng-template #introContent><span>{{user.username}}, select a hero, then press save!</span></ng-template>
+  </h4>
   <div class="card-block">
-    <form #accountForm="ngForm" (ngSubmit)="save(user)">
+    <form #accountForm="ngForm" (ngSubmit)="
+      user.hero=activeHero;
+      save(user)">
       <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
         <input class="form-control" type="text" name="username" [(ngModel)]="user.username" placeholder="Username" required>
       </div>
       <div class="input-group">

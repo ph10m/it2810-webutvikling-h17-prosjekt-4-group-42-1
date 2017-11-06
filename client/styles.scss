@@ -26,28 +26,26 @@ body {
   margin-bottom: 10px;
   background: #000;
 	cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-cursor.png) 10 2, auto !important;
-	overflow: hidden;
   a { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
 	&:active { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
   button { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
   input { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
   .hero-selection { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
 
-	&:after {
-		position: absolute;
-		// background-image: url(http://i.imgur.com/AwnKj6j.jpg);
+	// background-image: url(http://i.imgur.com/AwnKj6j.jpg);
+  .page-bg {
     background-image: url(https://wallpaperclicker.com/storage/wallpaper/hearthstone-deck-48048904.jpg);
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		content: '';
-		filter: blur( 15px );
-		bottom: 0;
-		left: 0;
-		right: 0;
-		top: 0;
-		z-index: -1;
-	}
+  	background-position: center center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+    position: fixed;
+  	filter: blur( 15px );
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+  	top: 0;
+  	z-index: -1;
+  }
 }
 
 .input-group {

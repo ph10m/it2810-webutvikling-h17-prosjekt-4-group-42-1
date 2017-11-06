@@ -1,13 +1,15 @@
-@keyframes jump {
-    0%   {opacity: 1.0; top: 15%;}
-    50%  {opacity: 0.1; top: 20%;}
-    100% {opacity: 0; top: 20%;}
+@keyframes fall {
+    0%   {opacity: 1.0; top: 10%;}
+    50%  {opacity: 0.3; top: 20%;}
+    100% {opacity: 0; top: 15%;}
+}
+
+@keyframes fall-no-fade {
+    0%   {top: 5%;}
+    100% {top: 35%;}
 }
 .loader {
-  position: absolute;
-  left: 50%;
-  right: 50%;
-  margin: 0 auto;
-  top: 25%;
-  animation: jump 0.5s ease;
+  position: fixed;
+  left: 48vw;
+  animation: fall 0.5s ease;
 }

@@ -2,13 +2,11 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { RoutingModule } from './routing.module';
 import { SharedModule } from './shared/shared.module';
-import { CatService } from './services/cat.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 import { AppComponent } from './app.component';
-import { CatsComponent } from './cats/cats.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -24,7 +22,6 @@ import { MatSliderModule, MatCheckboxModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
-    CatsComponent,
     AboutComponent,
     RegisterComponent,
     LoginComponent,
@@ -45,7 +42,6 @@ import { MatSliderModule, MatCheckboxModule } from '@angular/material';
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
-    CatService,
     UserService,
     CardsService
   ],

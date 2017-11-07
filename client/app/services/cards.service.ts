@@ -13,7 +13,7 @@ export class CardsService {
   }
 
   getCards(query: object): Observable<any> {
-    return this.http.get('/api/card',{params: query}).map(res => res.json());
+    return this.http.get('/api/card', {params: query}).map(res => res.json());
   }
 
   countCards(): Observable<any> {

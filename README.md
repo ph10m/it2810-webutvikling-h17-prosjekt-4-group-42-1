@@ -15,3 +15,11 @@ where 'GAME' is part of a query like 'GAME_123'. To find all cards containing 'P
 ```
 db.cards.deleteMany({'name': {'$regex': 'Power'}})
 ```
+delete all cards missing images:
+```
+db.cards.deleteMany({'img': {'$exists': false}})
+```
+sort by values and limit search:
+```
+db.cards.find({name:{$regex: 'Power'}, cost: {$gt:0}}).sort({cost: 1}).limit(2).pretty()
+```

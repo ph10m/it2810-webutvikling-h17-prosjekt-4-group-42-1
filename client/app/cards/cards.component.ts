@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CardsService } from '../services/cards.service';
 import { ModalComponent } from '../shared/modal/modal.component';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-cards',
@@ -13,6 +12,7 @@ export class CardsComponent implements OnInit {
   expanded: number;
   cards = [];
   isLoading = true;
+  @ViewChild('visibleCards') visibleCards:object;
   active_query = {
       'attack': undefined,
       'health': undefined,
@@ -23,7 +23,6 @@ export class CardsComponent implements OnInit {
   }
 
   constructor(private cardsService: CardsService,
-              private formBuilder: FormBuilder,
               public modal: ModalComponent) { }
 
   ngOnInit() {
@@ -37,6 +36,12 @@ export class CardsComponent implements OnInit {
       data => this.cards = data,
       error => console.log(error),
       () => this.isLoading = false
+    );
+  }
+
+  getCount() {
+    this.cardsService.countCards().subscribe(
+      data=> console.log(data)
     );
   }
 

@@ -3,6 +3,7 @@ import BaseCtrl from './base';
 
 export default class CardCtrl {
   model = Card;
+  count: number;
 
   // Get all
   getAll = (req, res) => {
@@ -16,21 +17,23 @@ export default class CardCtrl {
   count = (req, res) => {
     this.model.count((err, count) => {
       if (err) { return console.error(err); }
+      console.log(this.count);
       res.json(count);
     });
+    // this.count;
   }
 
   getByQuery = (req, res) => {
     let parsed_query = {}
     // stupid code thx
     if (req.query.attack !== undefined) {
-      parsed_query['attack'] = { '$in': req.query.attack };
+      parsed_query['attack'] = { '$gt': req.query.attack };
     }
     if (req.query.health !== undefined) {
       parsed_query['health'] = { '$in': req.query.health };
     }
     if (req.query.cost !== undefined) {
-      parsed_query['cost'] = { '$in': req.query.cost };
+      parsed_query['cost'] = { '$gt': -1, '$in': req.query.cost };
     }
     if (req.query.playerClass !== undefined) {
       parsed_query['playerClass'] = { '$in': req.query.playerClass };
@@ -43,10 +46,14 @@ export default class CardCtrl {
     }
     console.log('Mongoose finding ');
     console.log(parsed_query);
+    let count = 0
     this.model.find(parsed_query, (err, obj) => {
-      if (err) { return console.error(err); }
+      if (err) {
+        return console.error(err);
+      }
+      this.count = obj.length
       res.json(obj);
-    });
+    }).sort({'cost': 1});
   }
 
   // Update by id

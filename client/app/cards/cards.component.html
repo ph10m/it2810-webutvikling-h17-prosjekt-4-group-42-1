@@ -38,7 +38,7 @@
     <button (click)="resetQuery()">Reset</button>
   </div>
   <!-- END FILTER -->
-  <div class="card-list">
+  <div class="card-list" #visibleCards>
     <div class="card-display"
     *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
       <h2>{{card.name}}</h2>

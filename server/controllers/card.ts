@@ -13,14 +13,9 @@ export default class CardCtrl {
     });
   }
 
-  // Count all
-  count = (req, res) => {
-    this.model.count((err, count) => {
-      if (err) { return console.error(err); }
-      console.log(this.count);
-      res.json(count);
-    });
-    // this.count;
+  countCards = (req, res) => {
+    // simply returns the current length of count, found on line 50.
+    res.json(this.count);
   }
 
   getByQuery = (req, res) => {
@@ -51,6 +46,7 @@ export default class CardCtrl {
       if (err) {
         return console.error(err);
       }
+      // update length of current card count
       this.count = obj.length
       res.json(obj);
     }).sort({'cost': 1});

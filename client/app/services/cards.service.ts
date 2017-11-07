@@ -17,6 +17,6 @@ export class CardsService {
   }
 
   countCards(): Observable<any> {
-    return this.http.get('/api/cards/count').map(res => res.json());
+    return this.http.get('/api/cards/count');
   }
 }

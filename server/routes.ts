@@ -22,7 +22,7 @@ export default function setRoutes(app) {
   // Cards
   router.route('/cards').get(cardCtrl.getAll);
   router.route('/card?').get(cardCtrl.getByQuery);
-  router.route('/cards/count').get(cardCtrl.count);
+  router.route('/cards/count').get(cardCtrl.countCards);
 
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);

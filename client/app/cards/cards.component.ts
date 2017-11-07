@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardsService } from '../services/cards.service';
 import { ModalComponent } from '../shared/modal/modal.component';
 
@@ -12,7 +12,8 @@ export class CardsComponent implements OnInit {
   expanded: number;
   cards = [];
   isLoading = true;
-  @ViewChild('visibleCards') visibleCards:object;
+  visibleCards: number;
+
   active_query = {
       'attack': undefined,
       'health': undefined,
@@ -35,13 +36,19 @@ export class CardsComponent implements OnInit {
     this.cardsService.getCards(this.active_query).subscribe(
       data => this.cards = data,
       error => console.log(error),
-      () => this.isLoading = false
+      () => {
+        this.isLoading = false;
+        this.getCount();
+      }
     );
   }
 
   getCount() {
     this.cardsService.countCards().subscribe(
-      data=> console.log(data)
+      data => {
+        this.visibleCards = data.json();
+        console.log('Visible cards: ' + this.visibleCards);
+      }
     );
   }
 

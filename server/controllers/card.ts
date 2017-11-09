@@ -22,10 +22,10 @@ export default class CardCtrl {
     let parsed_query = {}
     // stupid code thx
     if (req.query.attack !== undefined) {
-      parsed_query['attack'] = { '$gt': req.query.attack };
+      parsed_query['attack'] = { '$gt': req.query.attack - 1};
     }
     if (req.query.health !== undefined) {
-      parsed_query['health'] = { '$in': req.query.health };
+      parsed_query['health'] = { '$in': req.query.health};
     }
     if (req.query.cost !== undefined) {
       parsed_query['cost'] = { '$gt': -1, '$in': req.query.cost };
@@ -39,9 +39,9 @@ export default class CardCtrl {
     if (req.query.rarity !== undefined) {
       parsed_query['rarity'] = { '$in': req.query.rarity };
     }
-    console.log('Mongoose finding ');
     console.log(parsed_query);
-    let count = 0
+    let lim = parseInt(req.query.limit, 10);
+    let skip = req.query.index * lim;
     this.model.find(parsed_query, (err, obj) => {
       if (err) {
         return console.error(err);
@@ -49,7 +49,7 @@ export default class CardCtrl {
       // update length of current card count
       this.count = obj.length
       res.json(obj);
-    }).sort({'cost': 1});
+    }).sort({'cost': 1}).skip(skip).limit(lim);
   }
 
   // Update by id

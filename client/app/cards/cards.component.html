@@ -39,6 +39,10 @@
   </div>
   <!-- END FILTER -->
   <div class="card-list" #visibleCards>
+  <div class="navigation-buttons">
+    <button class="btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
+    <button class="btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
+  </div>
     <div class="card-display"
     *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
       <h2>{{card.name}}</h2>
@@ -47,4 +51,5 @@
       </div>
     </div>
   </div>
+
 </div>

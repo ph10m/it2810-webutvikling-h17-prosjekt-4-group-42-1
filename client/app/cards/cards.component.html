@@ -1,40 +1,95 @@
 <app-loading [condition]="isLoading"></app-loading>
 <div class="card-container">
+
   <!-- START FILTER -->
   <div class="card-filter">
-    <label>Attack: </label>
-    <mat-slider (input)="setAttack($event.value)"
-     min="1" max="12" step="1" value="2"></mat-slider>
-    <label>Health: </label>
-    <mat-slider (input)="setHealth($event.value)"
-      min="1" max="12" step="1" value="2"></mat-slider>
-    <label>Mana: </label>
-    <mat-slider (input)="setMana($event.value)"
-      min="1" max="12" step="1" value="2"></mat-slider>
-    <div class="filter-checkboxes">
-      <label>Class: </label>
-      <mat-checkbox (click)="toggleClass('Druid')">Druid</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Hunter')">Hunter</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Mage')">Mage</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Paladin')">Paladin</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Priest')">Priest</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Rogue')">Rogue</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Shaman')">Shaman</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Warlock')">Warlock</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Warrior')">Warrior</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Neutral')">Neutral</mat-checkbox>
-      <label>Type: </label>
-      <mat-checkbox (click)="toggleType('Minion')">Minion</mat-checkbox>
-      <mat-checkbox (click)="toggleType('Spell')">Spell</mat-checkbox>
-      <mat-checkbox (click)="toggleType('Weapon')">Weapon</mat-checkbox>
-      <mat-checkbox (click)="toggleType('Hero')">Hero</mat-checkbox>
-      <label>Rarity: </label>
-      <mat-checkbox (click)="toggleRarity('Common')">Common</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Uncommon')">Uncommon</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Rare')">Rare</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Epic')">Epic</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Legendary')">Legendary</mat-checkbox>
+
+    <div class="filter-cost">
+      <div class="slider">
+        <img src="../assets/card-icons/attack.png"/>
+        <input #atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+      </div>
+      <div class="slider">
+        <img src="../assets/card-icons/health.png"/>
+        <input #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+      </div>
+      <div class="slider">
+        <img src="../assets/card-icons/mana.png"/>
+        <input #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
+      </div>
     </div>
+
+    <div class="box-select-class">
+      <label>Class:</label>
+      <div class="filter-icons">
+        <div (click)="toggleClass('Druid')" [style.opacity]="getStyle('Druid')">
+          <img src="../assets/hero-icons/druid.png"/>
+        </div>
+        <div (click)="toggleClass('Hunter')" [style.opacity]="getStyle('Hunter')">
+          <img src="../assets/hero-icons/hunter.png"/>
+        </div>
+        <div (click)="toggleClass('Mage')" [style.opacity]="getStyle('Mage')">
+          <img src="../assets/hero-icons/mage.png"/>
+        </div>
+        <div (click)="toggleClass('Paladin')" [style.opacity]="getStyle('Paladin')">
+          <img src="../assets/hero-icons/paladin.png"/>
+        </div>
+        <div (click)="toggleClass('Priest')" [style.opacity]="getStyle('Priest')">
+          <img src="../assets/hero-icons/priest.png"/>
+        </div>
+        <div (click)="toggleClass('Rogue')" [style.opacity]="getStyle('Rogue')">
+          <img src="../assets/hero-icons/rogue.png"/>
+        </div>
+        <div (click)="toggleClass('Shaman')" [style.opacity]="getStyle('Shaman')">
+          <img src="../assets/hero-icons/shaman.png"/>
+        </div>
+        <div (click)="toggleClass('Warlock')" [style.opacity]="getStyle('Warlock')">
+          <img src="../assets/hero-icons/warlock.png"/>
+        </div>
+        <div (click)="toggleClass('Warrior')" [style.opacity]="getStyle('Warrior')">
+          <img src="../assets/hero-icons/warrior.png"/>
+        </div>
+      </div>
+    </div>
+    <div class="box-select-type">
+      <label>Type: </label>
+      <div class="filter-icons">
+        <div (click)="toggleType('Minion')" [style.opacity]="getStyle('Minion')">
+          <img src="../assets/card-icons/minion.png"/>
+        </div>
+        <div (click)="toggleType('Spell')" [style.opacity]="getStyle('Spell')">
+          <img src="../assets/card-icons/spell.png"/>
+        </div>
+        <div (click)="toggleType('Weapon')" [style.opacity]="getStyle('Weapon')">
+          <img src="../assets/card-icons/weapon.png"/>
+        </div>
+        <div (click)="toggleType('Hero')" [style.opacity]="getStyle('Hero')">
+          <img src="../assets/card-icons/hero.png"/>
+        </div>
+      </div>
+    </div>
+    <div class="box-select-rarity">
+      <label>Rarity: </label>
+      <div class="filter-rarity">
+        <div class="filter-rarity" (click)="toggleRarity('Common')" [style.opacity]="getStyle('Common')">
+          <div class="oval-common" ></div>
+          <p>Common</p>
+        </div>
+        <div class="filter-rarity" (click)="toggleRarity('Rare')" [style.opacity]="getStyle('Rare')">
+          <div class="oval-rare" ></div>
+          <p>Rare</p>
+        </div>
+        <div class="filter-rarity" (click)="toggleRarity('Epic')" [style.opacity]="getStyle('Epic')">
+          <div class="oval-epic" ></div>
+          <p>Epic</p>
+        </div>
+        <div class="filter-rarity" (click)="toggleRarity('Legendary')" [style.opacity]="getStyle('Legendary')">
+          <div class="oval-legendary" ></div>
+          <p>Legendary</p>
+        </div>
+      </div>
+    </div>
+
     <button (click)="resetQuery()">Reset</button>
   </div>
   <!-- END FILTER -->

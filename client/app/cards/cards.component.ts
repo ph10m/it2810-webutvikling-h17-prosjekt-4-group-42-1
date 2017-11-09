@@ -5,7 +5,11 @@ import { ModalComponent } from '../shared/modal/modal.component';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  styleUrls: [
+    './styles/cardlist.scss',
+    './styles/filter/rarity.scss',
+    './styles/filter/shared.scss'
+  ]
 })
 
 export class CardsComponent implements OnInit {
@@ -14,6 +18,25 @@ export class CardsComponent implements OnInit {
   limit = 5;
   cards = [];
   isLoading = true;
+  togglePicture = {
+    'Druid': false,
+    'Hunter': false,
+    'Mage': false,
+    'Paladin': false,
+    'Priest': false,
+    'Rogue': false,
+    'Shaman': false,
+    'Warlock': false,
+    'Qarrior': false,
+    'Minion': false,
+    'Spell': false,
+    'Weapon': false,
+    'Hero': false,
+    'Common': false,
+    'Epic': false,
+    'Rare': false,
+    'Legendary': false
+  };
   lastIndex: boolean;
 
   active_query = {
@@ -89,21 +112,32 @@ export class CardsComponent implements OnInit {
   }
 
   toggleClass(heroClass: string) {
+    this.togglePicture[heroClass] = !this.togglePicture[heroClass];
     const arr = this.toggleArray(this.active_query.playerClass, heroClass);
     this.active_query.playerClass = arr;
     this.getCards();
   }
 
   toggleType(cardType: string) {
+    this.togglePicture[cardType] = !this.togglePicture[cardType];
     const arr = this.toggleArray(this.active_query.type, cardType);
     this.active_query.type = arr;
     this.getCards();
   }
 
   toggleRarity(rarity: string) {
+    this.togglePicture[rarity] = !this.togglePicture[rarity];
     const arr = this.toggleArray(this.active_query.rarity, rarity);
     this.active_query.rarity = arr;
     this.getCards();
+  }
+
+  getStyle(heroclass: string) {
+    if (this.togglePicture[heroclass]) {
+      return 1;
+    } else {
+      return 0.3;
+    }
   }
 
 
@@ -118,6 +152,9 @@ export class CardsComponent implements OnInit {
       'limit': this.limit,
       'index': 0
     };
+    for (const key in this.togglePicture) {
+      this.togglePicture[key] = false;
+    }
     this.getCards();
   }
 

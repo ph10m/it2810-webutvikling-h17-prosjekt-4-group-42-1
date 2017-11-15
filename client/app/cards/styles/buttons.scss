@@ -1,0 +1,33 @@
+#button-wrapper {
+  vertical-align: top;
+  text-align: center;
+}
+button:active {
+  outline: none !important;
+  border: none !important;
+}
+
+button:focus {
+  outline:0 !important;
+}
+
+.navigation-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-btn {
+  width: 50%;
+  justify-content: space-around;
+}
+
+.toggle-btn {
+  width: 100%;
+  justify-content: space-around;
+}
+
+.reset-btn {
+  background-color: #550000;
+  color: lightGray;
+}

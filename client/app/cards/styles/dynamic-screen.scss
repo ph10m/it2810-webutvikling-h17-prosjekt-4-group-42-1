@@ -1,0 +1,30 @@
+@media screen and (min-width: 1200px) {
+
+  .card-container {
+    flex-direction: row;
+  }
+
+  .card-filter {
+    flex-direction: column;
+    justify-content: inherit;
+    width: 20%;
+  }
+
+  .sorting-category {
+    padding-bottom: 30px;
+  }
+
+  .card-list {
+    width: 80%;
+  }
+
+  button {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card-filter {
+    justify-content: space-between;
+  }
+}

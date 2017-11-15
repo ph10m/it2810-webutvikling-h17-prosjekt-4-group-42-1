@@ -8,7 +8,10 @@ import { ModalComponent } from '../shared/modal/modal.component';
   styleUrls: [
     './styles/cardlist.scss',
     './styles/filter/rarity.scss',
-    './styles/filter/shared.scss'
+    './styles/filter/shared.scss',
+    './styles/filter/filter.scss',
+    './styles/dynamic-screen.scss',
+    './styles/buttons.scss'
   ]
 })
 
@@ -62,6 +65,7 @@ export class CardsComponent implements OnInit {
 
   getCards() {
     console.log(this.active_query);
+    this.isLoading = true;
     this.cardsService.getCards(this.active_query).subscribe(
       data => this.cards = data,
       error => console.log(error),

@@ -1,110 +1,118 @@
 <app-loading [condition]="isLoading"></app-loading>
 <div class="card-container">
   <div class="card-filter">
+    <div class="sorting-category">
+      <label>Stats</label>
+      <div class="content">
+        <div class="slide-container">
+          <img src="../assets/card-icons/attack.png"/>
+          <input #atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+        </div>
+        <div class="slide-container">
+          <img src="../assets/card-icons/health.png"/>
+          <input #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+        </div>
+        <div class="slide-container">
+          <img src="../assets/card-icons/mana.png"/>
+          <input #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
+        </div>
+      </div>
+    </div>
 
-    <div class="box cost">
-      <div class="slider">
-        <img src="../assets/card-icons/attack.png"/>
-        <input #atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
-      </div>
-      <div class="slider">
-        <img src="../assets/card-icons/health.png"/>
-        <input #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
-      </div>
-      <div class="slider">
-        <img src="../assets/card-icons/mana.png"/>
-        <input #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
+    <div class="sorting-category">
+      <label>Class</label>
+      <div class="content">
+        <div class="row">
+          <div (click)="toggleClass('Druid')" [style.opacity]="getStyle('Druid')">
+            <img src="../assets/hero-icons/druid.png"/>
+          </div>
+          <div (click)="toggleClass('Hunter')" [style.opacity]="getStyle('Hunter')">
+            <img src="../assets/hero-icons/hunter.png"/>
+          </div>
+          <div (click)="toggleClass('Mage')" [style.opacity]="getStyle('Mage')">
+            <img src="../assets/hero-icons/mage.png"/>
+          </div>
+        </div>
+        <div class="row">
+          <div (click)="toggleClass('Paladin')" [style.opacity]="getStyle('Paladin')">
+            <img src="../assets/hero-icons/paladin.png"/>
+          </div>
+          <div (click)="toggleClass('Priest')" [style.opacity]="getStyle('Priest')">
+            <img src="../assets/hero-icons/priest.png"/>
+          </div>
+          <div (click)="toggleClass('Rogue')" [style.opacity]="getStyle('Rogue')">
+            <img src="../assets/hero-icons/rogue.png"/>
+          </div>
+        </div>
+        <div class="row">
+          <div (click)="toggleClass('Shaman')" [style.opacity]="getStyle('Shaman')">
+            <img src="../assets/hero-icons/shaman.png"/>
+          </div>
+          <div (click)="toggleClass('Warlock')" [style.opacity]="getStyle('Warlock')">
+            <img src="../assets/hero-icons/warlock.png"/>
+          </div>
+          <div (click)="toggleClass('Warrior')" [style.opacity]="getStyle('Warrior')">
+            <img src="../assets/hero-icons/warrior.png"/>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div>
-      <!-- <label>Class:</label> -->
-      <div class="box class">
-        <div class="class-item"
-          (click)="toggleClass('Druid')" [style.opacity]="getStyle('Druid')">
-          <img src="../assets/hero-icons/druid.png"/>
+
+    <div class="sorting-category">
+      <label>Type</label>
+      <div class="content">
+        <div class="row">
+          <div class="image first" (click)="toggleType('Minion')" [style.opacity]="getStyle('Minion')">
+            <img src="../assets/card-icons/minion.png"/>
+          </div>
+          <div class="image second" (click)="toggleType('Spell')" [style.opacity]="getStyle('Spell')">
+            <img src="../assets/card-icons/spell.png"/>
+          </div>
         </div>
-        <div class="class-item"
-          (click)="toggleClass('Hunter')" [style.opacity]="getStyle('Hunter')">
-          <img src="../assets/hero-icons/hunter.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Mage')" [style.opacity]="getStyle('Mage')">
-          <img src="../assets/hero-icons/mage.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Paladin')" [style.opacity]="getStyle('Paladin')">
-          <img src="../assets/hero-icons/paladin.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Priest')" [style.opacity]="getStyle('Priest')">
-          <img src="../assets/hero-icons/priest.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Rogue')" [style.opacity]="getStyle('Rogue')">
-          <img src="../assets/hero-icons/rogue.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Shaman')" [style.opacity]="getStyle('Shaman')">
-          <img src="../assets/hero-icons/shaman.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Warlock')" [style.opacity]="getStyle('Warlock')">
-          <img src="../assets/hero-icons/warlock.png"/>
-        </div>
-        <div class="class-item"
-          (click)="toggleClass('Warrior')" [style.opacity]="getStyle('Warrior')">
-          <img src="../assets/hero-icons/warrior.png"/>
+        <div class="row">
+          <div class="image first" (click)="toggleType('Weapon')" [style.opacity]="getStyle('Weapon')">
+            <img src="../assets/card-icons/weapon.png"/>
+          </div>
+          <div class="image second" (click)="toggleType('Hero')" [style.opacity]="getStyle('Hero')">
+            <img src="../assets/card-icons/hero.png"/>
+          </div>
         </div>
       </div>
     </div>
-    <div class="box type">
-      <!-- <label>Type: </label> -->
-      <div class="type-cell"
-        (click)="toggleType('Minion')" [style.opacity]="getStyle('Minion')">
-        <img src="../assets/card-icons/minion.png"/>
-      </div>
-      <div class="type-cell"
-        (click)="toggleType('Spell')" [style.opacity]="getStyle('Spell')">
-        <img src="../assets/card-icons/spell.png"/>
-      </div>
-      <div class="type-cell"
-        (click)="toggleType('Weapon')" [style.opacity]="getStyle('Weapon')">
-        <img src="../assets/card-icons/weapon.png"/>
-      </div>
-      <div class="type-cell"
-        (click)="toggleType('Hero')" [style.opacity]="getStyle('Hero')">
-        <img src="../assets/card-icons/hero.png"/>
-      </div>
-    </div>
-    <div class="box rarity">
-      <!-- <label>Rarity: </label> -->
-      <div class="filter-rarity" (click)="toggleRarity('Common')" [style.opacity]="getStyle('Common')">
-        <div class="oval-Common" ></div>
-        <p>Common</p>
-      </div>
-      <div class="filter-rarity" (click)="toggleRarity('Rare')" [style.opacity]="getStyle('Rare')">
-        <div class="oval-Rare" ></div>
-        <p>Rare</p>
-      </div>
-      <div class="filter-rarity" (click)="toggleRarity('Epic')" [style.opacity]="getStyle('Epic')">
-        <div class="oval-Epic" ></div>
-        <p>Epic</p>
-      </div>
-      <div class="filter-rarity" (click)="toggleRarity('Legendary')" [style.opacity]="getStyle('Legendary')">
-        <div class="oval-Legendary" ></div>
-        <p>Legendary</p>
+
+
+    <div class="sorting-category">
+      <label>Rarity</label>
+      <div class="content">
+        <div class="row" (click)="toggleRarity('Common')" [style.opacity]="getStyle('Common')">
+          <div class="oval-common" ></div>
+          <p>Common</p>
+        </div>
+        <div class="row" (click)="toggleRarity('Rare')" [style.opacity]="getStyle('Rare')">
+          <div class="oval-rare" ></div>
+          <p>Rare</p>
+        </div>
+        <div class="row" (click)="toggleRarity('Epic')" [style.opacity]="getStyle('Epic')">
+          <div class="oval-epic" ></div>
+          <p>Epic</p>
+        </div>
+        <div class="row" (click)="toggleRarity('Legendary')" [style.opacity]="getStyle('Legendary')">
+          <div class="oval-legendary" ></div>
+          <p>Legendary</p>
+        </div>
       </div>
     </div>
   </div>
-  <button (click)="resetQuery()">Reset</button>
-  <!-- END FILTER -->
   <div class="card-list">
-    <div class="navigation-buttons">
-      <button class="btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
-      <button class="btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
+    <div id="button-wrapper">
+      <button class="toggle-btn btn reset-btn" (click)="resetQuery()">Reset</button>
+      <div class="navigation-buttons">
+        <button class="nav-btn btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
+        <button class="nav-btn btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
+      </div>
+      <button class="toggle-btn btn btn-dark" (click)="toggleView()">{{viewCardButton}}</button>
     </div>
-    <button class="btn btn-dark" (click)="toggleView()">{{viewCardButton}}</button>
       <div *ngIf="viewCards; then showCardImage else showCardBox"> </div>
       <ng-template #showCardImage>
         <div class="card-image-display">

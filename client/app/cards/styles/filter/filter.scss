@@ -1,0 +1,81 @@
+.card-filter {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 2%;
+  padding: 10px;
+}
+
+.sorting-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.label {
+  height: 2em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.card-filter img {
+  width: 50px;
+  height: 50px;
+}
+
+.image {
+  padding: 12.5px 0;
+}
+
+.first {
+  padding-right: 12.5px;
+}
+
+.second {
+  padding-left: 12.5px;
+}
+
+.slide-container img {
+  width: auto;
+  height: 30px;
+}
+
+.row {
+  padding: 0 12.5px;
+}
+
+@mixin oval($col){
+  width: 15px;
+  height: 15px;
+  background: $col;
+  border-radius: 100px 50px;
+}
+
+.oval-common{
+  @include oval(gray);
+}
+.oval-rare{
+  @include oval(blue);
+}
+.oval-epic{
+  @include oval(purple);
+}
+.oval-legendary{
+  @include oval(orange);
+}
+
+p {
+  margin-top: -4px;
+  margin-left: 3px;
+}
+
+button {
+  display: flex;
+  align-self: flex-end;
+}

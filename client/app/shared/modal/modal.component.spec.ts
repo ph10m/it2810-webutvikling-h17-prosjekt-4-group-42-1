@@ -33,17 +33,15 @@ describe('ModalComponent', () => {
 
   it('should set the message and create the DOM element', () => {
     const mockMessage = {
-      body: 'test message',
-      type: 'warning'
+      body: [],
+      type: 'Legendary'
     };
     component.setMessage(mockMessage.body, mockMessage.type);
     expect(component.message.body).toBe(mockMessage.body);
     expect(component.message.type).toBe(mockMessage.type);
     fixture.detectChanges();
-    const de = fixture.debugElement.query(By.css('div'));
+    const de = fixture.debugElement.query(By.css('h1'));
     const el = de.nativeElement;
     expect(de).toBeDefined();
-    expect(el.textContent).toContain(mockMessage.body);
-    expect(el.className).toContain(mockMessage.type);
   });
 });

@@ -8,17 +8,52 @@
 
 .card-container {
   display: flex;
-  background: rgba(255,255,255, 0.3);
-  flex-flow: row wrap;
-  align-items: stretch;
-  transition: 0s all linear;
+  // background: rgba(255,255,255, 0.3);
+  background: black;
+  color: lightGray;
+  flex-flow: column wrap;
+  // align-items: stretch;
 }
 
 .card-list {
-  flex-grow: 1;
-  width: 19%;
+  // flex-grow: 1;
+  // width: 19%;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  // flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-around;
+  text-align: center;
+}
+
+.card-view {
+  border: 2px solid white;
+  max-width: 500px;
+  margin: 15px auto;
+  img {
+    width: auto;
+    height: 49px;
+  }
+}
+
+.card-image-display {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.card-text {
+  // margin-bottom: -30px;
+  margin-bottom: 10px;
+}
+
+.card-stats {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  // margin: 15px 15px;
+  margin: -50px 15px 15px 15px;
+}
+
+.card-view-rarity {
+  margin: 15px auto !important;
 }

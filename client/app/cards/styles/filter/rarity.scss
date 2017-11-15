@@ -23,15 +23,15 @@
   position: relative;
 }
 
-.oval-common{
+.oval-Common{
   @include oval(gray, darkGray, white);
 }
-.oval-rare{
+.oval-Rare{
   @include oval(blue, darkBlue, teal);
 }
-.oval-epic{
+.oval-Epic{
   @include oval(darkViolet, purple, darkMagenta);
 }
-.oval-legendary{
+.oval-Legendary{
   @include oval(orange, darkOrange, goldenRod);
 }

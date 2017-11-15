@@ -13,11 +13,13 @@ import { ModalComponent } from '../shared/modal/modal.component';
 })
 
 export class CardsComponent implements OnInit {
-
   expanded: number;
   limit = 5;
   cards = [];
   isLoading = true;
+  viewCards = false;
+  viewCardButton = "Toggle image view";
+
   togglePicture = {
     'Druid': false,
     'Hunter': false,
@@ -38,7 +40,6 @@ export class CardsComponent implements OnInit {
     'Legendary': false
   };
   lastIndex: boolean;
-
   active_query = {
       'attack': undefined,
       'health': undefined,
@@ -55,7 +56,7 @@ export class CardsComponent implements OnInit {
 
   ngOnInit() {
     this.active_query.cost = 9;
-    this.active_query.type=["Spell"];
+    // this.active_query.type=["Spell"];
     this.getCards();
   }
 
@@ -178,6 +179,16 @@ export class CardsComponent implements OnInit {
   nextPage() {
     this.active_query.index += 1;
     this.getCards();
+  }
+
+  toggleView() {
+    this.viewCards = !this.viewCards;
+    if (this.viewCards) {
+      this.viewCardButton = "Toggle text view";
+    }
+    else {
+      this.viewCardButton = "Toggle image view";
+    }
   }
 }
 

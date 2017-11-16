@@ -1,6 +1,13 @@
-<app-loading [condition]="isLoading"></app-loading>
 <div class="card-container">
   <div class="card-filter">
+    <div class="sorting-category">
+      <button class="toggle-btn btn reset-btn" (click)="resetQuery()">Reset</button>
+      <button class="toggle-btn btn btn-dark" (click)="toggleView()">{{viewCardButton}}</button>
+      <select #sortSelect (change)="getSortKey($event.target.value)"
+        class="form-control form-control btn-dark toggle-btn">
+        <option *ngFor="let n of sortList" [value]="n">Sort by {{n}}</option>
+      </select>
+    </div>
     <div class="sorting-category">
       <label>Stats</label>
       <div class="content">
@@ -104,49 +111,46 @@
       </div>
     </div>
   </div>
+
   <div class="card-list">
-    <div id="button-wrapper">
-      <button class="toggle-btn btn reset-btn" (click)="resetQuery()">Reset</button>
       <div class="navigation-buttons">
         <button class="nav-btn btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
         <button class="nav-btn btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
       </div>
-      <button class="toggle-btn btn btn-dark" (click)="toggleView()">{{viewCardButton}}</button>
-    </div>
-      <div *ngIf="viewCards; then showCardImage else showCardBox"> </div>
-      <ng-template #showCardImage>
-        <div class="card-image-display">
-          <div *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
-            <img src="{{card.img}}"/>
-            <div *ngIf="expanded === i">
-              <app-modal [message]="modal.message"></app-modal>
-            </div>
+    <div *ngIf="viewCards; then showCardImage else showCardBox"> </div>
+    <ng-template #showCardImage>
+      <div class="card-image-display">
+        <div *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
+          <img src="{{card.img}}"/>
+          <div *ngIf="expanded === i">
+            <app-modal [message]="modal.message"></app-modal>
           </div>
         </div>
-      </ng-template>
-      <ng-template #showCardBox>
-        <div class="card-display" *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
-          <div class="card-view">
-            <div class="card-text">
-              <h2>{{card.name}}</h2>
-              <i>{{card.type}}</i>
-            </div>
-            <div class="card-view-rarity oval-{{card.rarity}}"></div>
-              <div *ngIf="card.type === 'Minion'" class="card-stats">
-                <div class="attack">
-                  <img src="../assets/card-icons/attack.png"/>
-                  {{card.attack}}
-                </div>
-                <div class="health">
-                  {{card.health}}
-                  <img src="../assets/card-icons/health.png"/>
-                </div>
+      </div>
+    </ng-template>
+    <ng-template #showCardBox>
+      <div class="card-display" *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
+        <div class="card-view">
+          <div class="card-text">
+            <h2>{{card.name}}</h2>
+            <i>{{card.type}}</i>
+          </div>
+          <div class="card-view-rarity oval-{{card.rarity}}"></div>
+            <div *ngIf="card.type === 'Minion'" class="card-stats">
+              <div class="attack">
+                <img src="../assets/card-icons/attack.png"/>
+                {{card.attack}}
               </div>
-            <div *ngIf="expanded === i">
-              <app-modal [message]="modal.message"></app-modal>
+              <div class="health">
+                {{card.health}}
+                <img src="../assets/card-icons/health.png"/>
+              </div>
             </div>
+          <div *ngIf="expanded === i">
+            <app-modal [message]="modal.message"></app-modal>
           </div>
         </div>
-      </ng-template>
+      </div>
+    </ng-template>
   </div>
 </div>

@@ -19,7 +19,6 @@ import * as mongoose from 'mongoose';
 //   ]
 // }
 
-
 const cardSchema = new mongoose.Schema({
   name : String,
   cardSet : String,
@@ -37,12 +36,6 @@ const cardSchema = new mongoose.Schema({
   cardId : String,
   dbfId : String
 });
-// unused schema entries:
-//   locale : String,
-//   playerClass : String,
-//   elite : Boolean,
-//   cardId : String,
-//   dbfId : String,
 
 const Card = mongoose.model('Card', cardSchema);
 

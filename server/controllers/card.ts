@@ -25,7 +25,7 @@ export default class CardCtrl {
       parsed_query['attack'] = { '$gt': req.query.attack - 1};
     }
     if (req.query.health !== undefined) {
-      parsed_query['health'] = { '$in': req.query.health};
+      parsed_query['health'] = { '$gt': req.query.health - 1};
     }
     if (req.query.cost !== undefined) {
       parsed_query['cost'] = { '$gt': -1, '$in': req.query.cost };
@@ -39,17 +39,36 @@ export default class CardCtrl {
     if (req.query.rarity !== undefined) {
       parsed_query['rarity'] = { '$in': req.query.rarity };
     }
+    let sortKey = req.query.sort;
+    console.log(sortKey);
     console.log(parsed_query);
     let lim = parseInt(req.query.limit, 10);
     let skip = req.query.index * lim;
-    this.model.find(parsed_query, (err, obj) => {
-      if (err) {
-        return console.error(err);
-      }
-      // update length of current card count
-      this.count = obj.length
-      res.json(obj);
-    }).sort({'cost': 1}).skip(skip).limit(lim);
+    // an if-else workaround as dynamic variable name didn't work using sort
+    if (sortKey === 'attack') {
+      this.model.find(parsed_query, (err, obj) => {
+        if (err) { return console.error(err); }
+        // update length of current card count
+        this.count = obj.length
+        res.json(obj);
+      }).sort({attack: 1}).skip(skip).limit(lim);
+    }
+    else if (sortKey === 'health') {
+      this.model.find(parsed_query, (err, obj) => {
+        if (err) { return console.error(err); }
+        // update length of current card count
+        this.count = obj.length
+        res.json(obj);
+      }).sort({health: 1}).skip(skip).limit(lim);
+    }
+    else {
+      this.model.find(parsed_query, (err, obj) => {
+        if (err) { return console.error(err); }
+        // update length of current card count
+        this.count = obj.length
+        res.json(obj);
+      }).sort({cost: 1}).skip(skip).limit(lim);
+    }
   }
 
   // Update by id

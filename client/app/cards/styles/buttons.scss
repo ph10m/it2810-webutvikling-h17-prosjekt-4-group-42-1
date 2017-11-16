@@ -31,3 +31,12 @@ button:focus {
   background-color: #550000;
   color: lightGray;
 }
+
+select {
+  &:hover,
+  &:focus,
+  &:active {
+    color: lightGray;
+    background: #333;
+  }
+}

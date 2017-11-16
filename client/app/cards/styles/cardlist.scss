@@ -16,10 +16,8 @@
 }
 
 .card-list {
-  // flex-grow: 1;
-  // width: 19%;
+  margin-bottom: auto;
   display: flex;
-  // flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
@@ -56,4 +54,8 @@
 
 .card-view-rarity {
   margin: 15px auto !important;
+}
+
+select {
+  text-align-last: center;
 }

@@ -22,6 +22,7 @@ export class CardsComponent implements OnInit {
   isLoading = true;
   viewCards = false;
   viewCardButton = "Toggle image view";
+  sortList = ['cost', 'attack', 'health'];
 
   togglePicture = {
     'Druid': false,
@@ -44,14 +45,15 @@ export class CardsComponent implements OnInit {
   };
   lastIndex: boolean;
   active_query = {
-      'attack': undefined,
-      'health': undefined,
-      'cost': undefined,
-      'type': [],
-      'playerClass': [],
-      'rarity': [],
-      'limit': this.limit,
-      'index': 0
+    'attack': undefined,
+    'health': undefined,
+    'cost': undefined,
+    'type': [],
+    'playerClass': [],
+    'rarity': [],
+    'limit': this.limit,
+    'index': 0,
+    'sort': 'cost'
   }
 
   constructor(private cardsService: CardsService,
@@ -81,6 +83,11 @@ export class CardsComponent implements OnInit {
       error => console.log(error),
       () => this.lastIndex = visible < this.limit
     );
+  }
+
+  getSortKey(key) {
+    this.active_query.sort = key;
+    this.getCards();
   }
 
   setLimit(lim: number) {
@@ -153,7 +160,8 @@ export class CardsComponent implements OnInit {
       'playerClass': [],
       'rarity': [],
       'limit': this.limit,
-      'index': 0
+      'index': 0,
+      'sort': 'cost'
     };
     for (const key in this.togglePicture) {
       this.togglePicture[key] = false;

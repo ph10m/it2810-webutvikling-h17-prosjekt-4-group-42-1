@@ -58,8 +58,6 @@ export class CardsComponent implements OnInit {
               public modal: ModalComponent) { }
 
   ngOnInit() {
-    this.active_query.cost = 9;
-    // this.active_query.type=["Spell"];
     this.getCards();
   }
 

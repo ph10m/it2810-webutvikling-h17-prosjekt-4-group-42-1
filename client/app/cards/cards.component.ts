@@ -8,7 +8,6 @@ import { ModalComponent } from '../shared/modal/modal.component';
   styleUrls: [
     './styles/cardlist.scss',
     './styles/filter/rarity.scss',
-    './styles/filter/shared.scss',
     './styles/filter/filter.scss',
     './styles/dynamic-screen.scss',
     './styles/buttons.scss'

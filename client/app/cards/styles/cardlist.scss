@@ -1,18 +1,8 @@
-@mixin blur($px){
-  -webkit-filter: blur($px);
-  -moz-filter: blur($px);
-  -o-filter: blur($px);
-  -ms-filter: blur($px);
-  filter: blur($px);
-}
-
 .card-container {
   display: flex;
-  // background: rgba(255,255,255, 0.3);
   background: black;
   color: lightGray;
   flex-flow: column wrap;
-  // align-items: stretch;
 }
 
 .card-list {
@@ -40,7 +30,6 @@
 }
 
 .card-text {
-  // margin-bottom: -30px;
   margin-bottom: 10px;
 }
 

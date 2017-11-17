@@ -1,9 +1,14 @@
 .card-filter {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  flex-wrap: wrap;
+  max-width: 100%;
   margin-bottom: 2%;
   padding: 10px;
+  img {
+    width: auto;
+    height: 49px;
+  }
 }
 
 .sorting-category {
@@ -42,32 +47,12 @@
 }
 
 .slide-container img {
-  width: auto;
-  height: 30px;
+  width: 30px;
+  height: auto;
 }
 
 .row {
   padding: 0 12.5px;
-}
-
-@mixin oval($col){
-  width: 15px;
-  height: 15px;
-  background: $col;
-  border-radius: 100px 50px;
-}
-
-.oval-common{
-  @include oval(gray);
-}
-.oval-rare{
-  @include oval(blue);
-}
-.oval-epic{
-  @include oval(purple);
-}
-.oval-legendary{
-  @include oval(orange);
 }
 
 p {

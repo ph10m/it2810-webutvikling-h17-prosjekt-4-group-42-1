@@ -1,7 +1,6 @@
 .hero-selection{
   width: 100%;
   display: flex;
-  // margin-left: 4px;
 }
 
 .hero-btn {
@@ -14,11 +13,7 @@
 	background-size: cover;
 	background-position: center;
   overflow: hidden;
-	// cursor: pointer;
 	transition: all ease-out 0.4s;
-
-  font-size: 30px;
-  color: white;
 }
 
 .active {

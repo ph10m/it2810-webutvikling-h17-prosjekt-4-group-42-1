@@ -1,5 +1,4 @@
 .about-page {
-  // background-color: rgba(255,255,255, 0.5);
   background-color: black;
   color: lightGray;
 }
@@ -8,7 +7,6 @@
   background: url('../../assets/heroes.png');
 	background-size: cover;
 	background-position: center;
-  // position: relative;
   height: 50vh;
   width: auto;
   .intro-text {
@@ -54,8 +52,6 @@ hr {
   margin: 0 auto;
 	width: 295pt;
 	height: 111pt;
-	// width: 304pt;
-	// height: 111pt;
 	>span[class^=w] {
 		&:nth-of-type(n) {
 			display: block;

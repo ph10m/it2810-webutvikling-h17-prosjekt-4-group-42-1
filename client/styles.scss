@@ -1,60 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Asul:700');
-@mixin dark {
-  background-color: black !important;
-  color: lightGray !important;
-  border: 1px solid lightGray !important;
-}
-
-.navbar {
-  border-radius: 0;
-}
-.nav-right {
-  margin-left: 100px;
-}
-
-.inverse {
-  // @include dark;
-}
-
-.dark-input {
-  // @include dark;
-}
-
-.bg-primary {
-  background-color: #666 !important;
-}
-
-.container {
-  //possible shadow here
-}
-
-.page-content {
-  border-radius: 0;
-  // background: rgba(255,255,255,0.6);
-  background: black;
-  color: lightGray;
-}
-
-.btn {
-  // border-radius: 0;
-  border: 1px solid black;
-}
-
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+$cursor-normal: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-cursor.png) 10 2, auto;
+$cursor-click: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto;
 
 body {
-  // background-color: #fff;
   font-family: 'Asul';
   margin-top: 15px;
   margin-bottom: 10px;
   background: #000;
-	cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-cursor.png) 10 2, auto !important;
-  a { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
-	&:active { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
-  button { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
-  input { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
-  .hero-selection { cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-click.png) 10 2, auto; }
+	cursor: $cursor-normal;
+  a, button, input, .hero-selection, &:active { cursor: $cursor-click; }
 
 	// background-image: url(http://i.imgur.com/AwnKj6j.jpg);
   .page-bg {
@@ -71,10 +25,20 @@ body {
   	z-index: -1;
   }
 }
+
+.page-content {
+  background: black;
+  color: lightGray;
+}
+
+button:focus {
+  border: none !important;
+  outline: none !important;
+}
+// register, login, etc.
 .input-group {
   margin-bottom: 10px;
 }
-
 
 // input border color
 textarea:focus,
@@ -92,7 +56,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
   outline: 0 none;

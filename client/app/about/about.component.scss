@@ -1,0 +1,200 @@
+.about-page {
+  // background-color: rgba(255,255,255, 0.5);
+  background-color: black;
+  color: lightGray;
+}
+
+.about-intro {
+  background: url('../../assets/heroes.png');
+	background-size: cover;
+	background-position: center;
+  // position: relative;
+  height: 50vh;
+  width: auto;
+  .intro-text {
+    padding-top: 20vh;
+    text-shadow: -2px 2px 5px black;
+  }
+  h1 {
+    font-size: 55px;
+  }
+  p {
+    margin-top: -2rem;
+    font-size: 1.5em;
+  }
+}
+
+.about-content {
+  margin-top: 20px;
+  h3 {
+    margin-bottom: 15px;
+  }
+}
+
+.about-footer {
+  font-size: 0.8em;
+  padding-bottom: 15px;
+}
+
+hr {
+  margin: 15px 20px;
+  background-color: lightGray;
+}
+
+.list-group-item-dark {
+  border-radius: 0;
+}
+
+
+// used for warped text on about page
+// generated with http://csswarp.eleqtriq.com/
+// then translated into scss
+#warped {
+	position: relative;
+  margin: 0 auto;
+	width: 295pt;
+	height: 111pt;
+	// width: 304pt;
+	// height: 111pt;
+	>span[class^=w] {
+		&:nth-of-type(n) {
+			display: block;
+			position: absolute;
+			-moz-transform-origin: 50% 100%;
+			-webkit-transform-origin: 50% 100%;
+			-o-transform-origin: 50% 100%;
+			-ms-transform-origin: 50% 100%;
+			transform-origin: 50% 100%;
+		}
+	}
+	span {
+		font-size: 38pt;
+		font-weight: regular;
+		font-style: normal;
+		line-height: 0.65;
+		white-space: pre;
+		overflow: visible;
+		padding: 0px;
+	}
+	.w0 {
+		-moz-transform: rotate(-6.52rad);
+		-webkit-transform: rotate(-6.52rad);
+		-o-transform: rotate(-6.52rad);
+		-ms-transform: rotate(-6.52rad);
+		transform: rotate(-6.52rad);
+		width: 26pt;
+		height: 24pt;
+		left: 16.53pt;
+		top: 46.87pt;
+	}
+	.w1 {
+		-moz-transform: rotate(-6.47rad);
+		-webkit-transform: rotate(-6.47rad);
+		-o-transform: rotate(-6.47rad);
+		-ms-transform: rotate(-6.47rad);
+		transform: rotate(-6.47rad);
+		width: 10pt;
+		height: 24pt;
+		left: 46.6pt;
+		top: 42.3pt;
+	}
+	.w2 {
+		-moz-transform: rotate(-6.43rad);
+		-webkit-transform: rotate(-6.43rad);
+		-o-transform: rotate(-6.43rad);
+		-ms-transform: rotate(-6.43rad);
+		transform: rotate(-6.43rad);
+		width: 18pt;
+		height: 24pt;
+		left: 61.31pt;
+		top: 39.28pt;
+	}
+	.w3 {
+		-moz-transform: rotate(-6.38rad);
+		-webkit-transform: rotate(-6.38rad);
+		-o-transform: rotate(-6.38rad);
+		-ms-transform: rotate(-6.38rad);
+		transform: rotate(-6.38rad);
+		width: 18pt;
+		height: 24pt;
+		left: 84.61pt;
+		top: 36.55pt;
+	}
+	.w4 {
+		-moz-transform: rotate(-6.33rad);
+		-webkit-transform: rotate(-6.33rad);
+		-o-transform: rotate(-6.33rad);
+		-ms-transform: rotate(-6.33rad);
+		transform: rotate(-6.33rad);
+		width: 23pt;
+		height: 24pt;
+		left: 107.19pt;
+		top: 34.83pt;
+	}
+	.w5 {
+		-moz-transform: rotate(-6.28rad);
+		-webkit-transform: rotate(-6.28rad);
+		-o-transform: rotate(-6.28rad);
+		-ms-transform: rotate(-6.28rad);
+		transform: rotate(-6.28rad);
+		width: 20pt;
+		height: 24pt;
+		left: 135.37pt;
+		top: 34.33pt;
+	}
+	.w6 {
+		-moz-transform: rotate(-6.24rad);
+		-webkit-transform: rotate(-6.24rad);
+		-o-transform: rotate(-6.24rad);
+		-ms-transform: rotate(-6.24rad);
+		transform: rotate(-6.24rad);
+		width: 21pt;
+		height: 24pt;
+		left: 160.46pt;
+		top: 35.09pt;
+	}
+	.w7 {
+		-moz-transform: rotate(-6.2rad);
+		-webkit-transform: rotate(-6.2rad);
+		-o-transform: rotate(-6.2rad);
+		-ms-transform: rotate(-6.2rad);
+		transform: rotate(-6.2rad);
+		width: 15pt;
+		height: 24pt;
+		left: 185.97pt;
+		top: 36.72pt;
+	}
+	.w8 {
+		-moz-transform: rotate(-6.17rad);
+		-webkit-transform: rotate(-6.17rad);
+		-o-transform: rotate(-6.17rad);
+		-ms-transform: rotate(-6.17rad);
+		transform: rotate(-6.17rad);
+		width: 11pt;
+		height: 24pt;
+		left: 206.12pt;
+		top: 38.66pt;
+	}
+	.w9 {
+		-moz-transform: rotate(-6.13rad);
+		-webkit-transform: rotate(-6.13rad);
+		-o-transform: rotate(-6.13rad);
+		-ms-transform: rotate(-6.13rad);
+		transform: rotate(-6.13rad);
+		width: 27pt;
+		height: 24pt;
+		left: 221.76pt;
+		top: 42.03pt;
+	}
+	.w10 {
+		-moz-transform: rotate(-6.08rad);
+		-webkit-transform: rotate(-6.08rad);
+		-o-transform: rotate(-6.08rad);
+		-ms-transform: rotate(-6.08rad);
+		transform: rotate(-6.08rad);
+		width: 22pt;
+		height: 24pt;
+		left: 253.51pt;
+		top: 47.48pt;
+	}
+}

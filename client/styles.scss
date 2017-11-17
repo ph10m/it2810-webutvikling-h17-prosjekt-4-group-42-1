@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Asul:700');
+@mixin dark {
+  background-color: black !important;
+  color: lightGray !important;
+  border: 1px solid lightGray !important;
+}
 
 .navbar {
   border-radius: 0;
@@ -7,16 +12,31 @@
   margin-left: 100px;
 }
 
+.inverse {
+  // @include dark;
+}
+
+.dark-input {
+  // @include dark;
+}
+
 .bg-primary {
   background-color: #666 !important;
 }
 
-.card {
+.container {
+  //possible shadow here
+}
+
+.page-content {
   border-radius: 0;
+  // background: rgba(255,255,255,0.6);
+  background: black;
+  color: lightGray;
 }
 
 .btn {
-  border-radius: 0;
+  // border-radius: 0;
   border: 1px solid black;
 }
 
@@ -51,10 +71,29 @@ body {
   	z-index: -1;
   }
 }
-
-.card-block {
-  margin: 15px;
-}
 .input-group {
   margin-bottom: 10px;
+}
+
+
+// input border color
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
+  outline: 0 none;
 }

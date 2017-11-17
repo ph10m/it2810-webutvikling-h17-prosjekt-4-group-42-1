@@ -5,39 +5,67 @@ import { ModalComponent } from '../shared/modal/modal.component';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.scss']
+  styleUrls: [
+    './styles/cardlist.scss',
+    './styles/filter/rarity.scss',
+    './styles/filter/shared.scss',
+    './styles/filter/filter.scss',
+    './styles/dynamic-screen.scss',
+    './styles/buttons.scss'
+  ]
 })
 
 export class CardsComponent implements OnInit {
-
   expanded: number;
   limit = 5;
   cards = [];
   isLoading = true;
-  lastIndex: boolean;
+  viewCards = false;
+  viewCardButton = "Toggle image view";
+  sortList = ['cost', 'attack', 'health'];
 
+  togglePicture = {
+    'Druid': false,
+    'Hunter': false,
+    'Mage': false,
+    'Paladin': false,
+    'Priest': false,
+    'Rogue': false,
+    'Shaman': false,
+    'Warlock': false,
+    'Qarrior': false,
+    'Minion': false,
+    'Spell': false,
+    'Weapon': false,
+    'Hero': false,
+    'Common': false,
+    'Epic': false,
+    'Rare': false,
+    'Legendary': false
+  };
+  lastIndex: boolean;
   active_query = {
-      'attack': undefined,
-      'health': undefined,
-      'cost': undefined,
-      'type': [],
-      'playerClass': [],
-      'rarity': [],
-      'limit': this.limit,
-      'index': 0
+    'attack': undefined,
+    'health': undefined,
+    'cost': undefined,
+    'type': [],
+    'playerClass': [],
+    'rarity': [],
+    'limit': this.limit,
+    'index': 0,
+    'sort': 'cost'
   }
 
   constructor(private cardsService: CardsService,
               public modal: ModalComponent) { }
 
   ngOnInit() {
-    this.active_query.cost = 9;
-    this.active_query.type=["Spell"];
     this.getCards();
   }
 
   getCards() {
     console.log(this.active_query);
+    this.isLoading = true;
     this.cardsService.getCards(this.active_query).subscribe(
       data => this.cards = data,
       error => console.log(error),
@@ -55,6 +83,11 @@ export class CardsComponent implements OnInit {
       error => console.log(error),
       () => this.lastIndex = visible < this.limit
     );
+  }
+
+  getSortKey(key) {
+    this.active_query.sort = key;
+    this.getCards();
   }
 
   setLimit(lim: number) {
@@ -89,21 +122,32 @@ export class CardsComponent implements OnInit {
   }
 
   toggleClass(heroClass: string) {
+    this.togglePicture[heroClass] = !this.togglePicture[heroClass];
     const arr = this.toggleArray(this.active_query.playerClass, heroClass);
     this.active_query.playerClass = arr;
     this.getCards();
   }
 
   toggleType(cardType: string) {
+    this.togglePicture[cardType] = !this.togglePicture[cardType];
     const arr = this.toggleArray(this.active_query.type, cardType);
     this.active_query.type = arr;
     this.getCards();
   }
 
   toggleRarity(rarity: string) {
+    this.togglePicture[rarity] = !this.togglePicture[rarity];
     const arr = this.toggleArray(this.active_query.rarity, rarity);
     this.active_query.rarity = arr;
     this.getCards();
+  }
+
+  getStyle(heroclass: string) {
+    if (this.togglePicture[heroclass]) {
+      return 1;
+    } else {
+      return 0.3;
+    }
   }
 
 
@@ -116,8 +160,12 @@ export class CardsComponent implements OnInit {
       'playerClass': [],
       'rarity': [],
       'limit': this.limit,
-      'index': 0
+      'index': 0,
+      'sort': 'cost'
     };
+    for (const key in this.togglePicture) {
+      this.togglePicture[key] = false;
+    }
     this.getCards();
   }
 
@@ -141,6 +189,16 @@ export class CardsComponent implements OnInit {
   nextPage() {
     this.active_query.index += 1;
     this.getCards();
+  }
+
+  toggleView() {
+    this.viewCards = !this.viewCards;
+    if (this.viewCards) {
+      this.viewCardButton = "Toggle text view";
+    }
+    else {
+      this.viewCardButton = "Toggle image view";
+    }
   }
 }
 

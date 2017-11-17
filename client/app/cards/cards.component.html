@@ -1,55 +1,156 @@
-<app-loading [condition]="isLoading"></app-loading>
 <div class="card-container">
-  <!-- START FILTER -->
   <div class="card-filter">
-    <label>Attack: </label>
-    <mat-slider (input)="setAttack($event.value)"
-     min="1" max="12" step="1" value="2"></mat-slider>
-    <label>Health: </label>
-    <mat-slider (input)="setHealth($event.value)"
-      min="1" max="12" step="1" value="2"></mat-slider>
-    <label>Mana: </label>
-    <mat-slider (input)="setMana($event.value)"
-      min="1" max="12" step="1" value="2"></mat-slider>
-    <div class="filter-checkboxes">
-      <label>Class: </label>
-      <mat-checkbox (click)="toggleClass('Druid')">Druid</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Hunter')">Hunter</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Mage')">Mage</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Paladin')">Paladin</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Priest')">Priest</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Rogue')">Rogue</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Shaman')">Shaman</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Warlock')">Warlock</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Warrior')">Warrior</mat-checkbox>
-      <mat-checkbox (click)="toggleClass('Neutral')">Neutral</mat-checkbox>
-      <label>Type: </label>
-      <mat-checkbox (click)="toggleType('Minion')">Minion</mat-checkbox>
-      <mat-checkbox (click)="toggleType('Spell')">Spell</mat-checkbox>
-      <mat-checkbox (click)="toggleType('Weapon')">Weapon</mat-checkbox>
-      <mat-checkbox (click)="toggleType('Hero')">Hero</mat-checkbox>
-      <label>Rarity: </label>
-      <mat-checkbox (click)="toggleRarity('Common')">Common</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Uncommon')">Uncommon</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Rare')">Rare</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Epic')">Epic</mat-checkbox>
-      <mat-checkbox (click)="toggleRarity('Legendary')">Legendary</mat-checkbox>
+    <div class="sorting-category">
+      <button class="toggle-btn btn reset-btn" (click)="resetQuery()">Reset</button>
+      <button class="toggle-btn btn btn-dark" (click)="toggleView()">{{viewCardButton}}</button>
+      <select #sortSelect (change)="getSortKey($event.target.value)"
+        class="form-control form-control btn-dark toggle-btn">
+        <option *ngFor="let n of sortList" [value]="n">Sort by {{n}}</option>
+      </select>
     </div>
-    <button (click)="resetQuery()">Reset</button>
-  </div>
-  <!-- END FILTER -->
-  <div class="card-list" #visibleCards>
-  <div class="navigation-buttons">
-    <button class="btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
-    <button class="btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
-  </div>
-    <div class="card-display"
-    *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
-      <h2>{{card.name}}</h2>
-      <div *ngIf="expanded === i">
-        <app-modal [message]="modal.message"></app-modal>
+    <div class="sorting-category">
+      <label>Stats</label>
+      <div class="content">
+        <div class="slide-container">
+          <img src="../assets/card-icons/attack.png"/>
+          <input #atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+        </div>
+        <div class="slide-container">
+          <img src="../assets/card-icons/health.png"/>
+          <input #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+        </div>
+        <div class="slide-container">
+          <img src="../assets/card-icons/mana.png"/>
+          <input #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
+        </div>
+      </div>
+    </div>
+
+    <div class="sorting-category">
+      <label>Class</label>
+      <div class="content">
+        <div class="row">
+          <div (click)="toggleClass('Druid')" [style.opacity]="getStyle('Druid')">
+            <img src="../assets/hero-icons/druid.png"/>
+          </div>
+          <div (click)="toggleClass('Hunter')" [style.opacity]="getStyle('Hunter')">
+            <img src="../assets/hero-icons/hunter.png"/>
+          </div>
+          <div (click)="toggleClass('Mage')" [style.opacity]="getStyle('Mage')">
+            <img src="../assets/hero-icons/mage.png"/>
+          </div>
+        </div>
+        <div class="row">
+          <div (click)="toggleClass('Paladin')" [style.opacity]="getStyle('Paladin')">
+            <img src="../assets/hero-icons/paladin.png"/>
+          </div>
+          <div (click)="toggleClass('Priest')" [style.opacity]="getStyle('Priest')">
+            <img src="../assets/hero-icons/priest.png"/>
+          </div>
+          <div (click)="toggleClass('Rogue')" [style.opacity]="getStyle('Rogue')">
+            <img src="../assets/hero-icons/rogue.png"/>
+          </div>
+        </div>
+        <div class="row">
+          <div (click)="toggleClass('Shaman')" [style.opacity]="getStyle('Shaman')">
+            <img src="../assets/hero-icons/shaman.png"/>
+          </div>
+          <div (click)="toggleClass('Warlock')" [style.opacity]="getStyle('Warlock')">
+            <img src="../assets/hero-icons/warlock.png"/>
+          </div>
+          <div (click)="toggleClass('Warrior')" [style.opacity]="getStyle('Warrior')">
+            <img src="../assets/hero-icons/warrior.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="sorting-category">
+      <label>Type</label>
+      <div class="content">
+        <div class="row">
+          <div class="image first" (click)="toggleType('Minion')" [style.opacity]="getStyle('Minion')">
+            <img src="../assets/card-icons/minion.png"/>
+          </div>
+          <div class="image second" (click)="toggleType('Spell')" [style.opacity]="getStyle('Spell')">
+            <img src="../assets/card-icons/spell.png"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="image first" (click)="toggleType('Weapon')" [style.opacity]="getStyle('Weapon')">
+            <img src="../assets/card-icons/weapon.png"/>
+          </div>
+          <div class="image second" (click)="toggleType('Hero')" [style.opacity]="getStyle('Hero')">
+            <img src="../assets/card-icons/hero.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="sorting-category">
+      <label>Rarity</label>
+      <div class="content">
+        <div class="row" (click)="toggleRarity('Common')" [style.opacity]="getStyle('Common')">
+          <div class="oval-common" ></div>
+          <p>Common</p>
+        </div>
+        <div class="row" (click)="toggleRarity('Rare')" [style.opacity]="getStyle('Rare')">
+          <div class="oval-rare" ></div>
+          <p>Rare</p>
+        </div>
+        <div class="row" (click)="toggleRarity('Epic')" [style.opacity]="getStyle('Epic')">
+          <div class="oval-epic" ></div>
+          <p>Epic</p>
+        </div>
+        <div class="row" (click)="toggleRarity('Legendary')" [style.opacity]="getStyle('Legendary')">
+          <div class="oval-legendary" ></div>
+          <p>Legendary</p>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="card-list">
+      <div class="navigation-buttons">
+        <button class="nav-btn btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
+        <button class="nav-btn btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
+      </div>
+    <div *ngIf="viewCards; then showCardImage else showCardBox"> </div>
+    <ng-template #showCardImage>
+      <div class="card-image-display">
+        <div *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
+          <img src="{{card.img}}"/>
+          <div *ngIf="expanded === i">
+            <app-modal [message]="modal.message"></app-modal>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #showCardBox>
+      <div class="card-display" *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
+        <div class="card-view">
+          <div class="card-text">
+            <h2>{{card.name}}</h2>
+            <i>{{card.type}}</i>
+          </div>
+          <div class="card-view-rarity oval-{{card.rarity}}"></div>
+            <div *ngIf="card.type === 'Minion'" class="card-stats">
+              <div class="attack">
+                <img src="../assets/card-icons/attack.png"/>
+                {{card.attack}}
+              </div>
+              <div class="health">
+                {{card.health}}
+                <img src="../assets/card-icons/health.png"/>
+              </div>
+            </div>
+          <div *ngIf="expanded === i">
+            <app-modal [message]="modal.message"></app-modal>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>

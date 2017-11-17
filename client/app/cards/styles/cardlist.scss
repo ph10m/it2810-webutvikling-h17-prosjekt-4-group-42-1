@@ -1,0 +1,61 @@
+@mixin blur($px){
+  -webkit-filter: blur($px);
+  -moz-filter: blur($px);
+  -o-filter: blur($px);
+  -ms-filter: blur($px);
+  filter: blur($px);
+}
+
+.card-container {
+  display: flex;
+  // background: rgba(255,255,255, 0.3);
+  background: black;
+  color: lightGray;
+  flex-flow: column wrap;
+  // align-items: stretch;
+}
+
+.card-list {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.card-view {
+  border: 2px solid white;
+  max-width: 500px;
+  margin: 15px auto;
+  img {
+    width: auto;
+    height: 49px;
+  }
+}
+
+.card-image-display {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.card-text {
+  // margin-bottom: -30px;
+  margin-bottom: 10px;
+}
+
+.card-stats {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  // margin: 15px 15px;
+  margin: -50px 15px 15px 15px;
+}
+
+.card-view-rarity {
+  margin: 15px auto !important;
+}
+
+select {
+  text-align-last: center;
+}

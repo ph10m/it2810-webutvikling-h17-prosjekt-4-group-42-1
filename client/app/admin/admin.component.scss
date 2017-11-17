@@ -8,3 +8,10 @@
 .guldan { background-color: $guldan !important; }
 .jaina { background-color: $jaina !important; }
 .anduin { background-color: $anduin !important; }
+
+.user-table {
+  width: 100%;
+  th, td {
+      padding: 15px;
+  }
+}

@@ -50,6 +50,7 @@ describe('Users', () => {
           res.body.should.have.a.property('username');
           res.body.should.have.a.property('email');
           res.body.should.have.a.property('role');
+          res.body.should.have.a.property('hero');
           done();
         });
     });
@@ -65,6 +66,7 @@ describe('Users', () => {
             res.body.should.have.property('username');
             res.body.should.have.property('email');
             res.body.should.have.property('role');
+            res.body.should.have.property('hero');
             res.body.should.have.property('_id').eql(newUser.id);
             done();
           });
@@ -72,7 +74,12 @@ describe('Users', () => {
     });
 
     it('should update a user by its id', done => {
-      const user = new User({ username: 'User', email: 'user@example.com', role: 'user' });
+      const user = new User({
+        username: 'User',
+        email: 'user@example.com',
+        role: 'user',
+        hero: 'testhero'
+      });
       user.save((error, newUser) => {
         chai.request(app)
           .put(`/api/user/${newUser.id}`)
@@ -85,7 +92,12 @@ describe('Users', () => {
     });
 
     it('should delete a user by its id', done => {
-      const user = new User({ username: 'User', email: 'user@example.com', role: 'user' });
+      const user = new User({
+        username: 'User',
+        email: 'user@example.com',
+        role: 'user',
+        hero: 'testhero'
+      });
       user.save((error, newUser) => {
         chai.request(app)
           .delete(`/api/user/${newUser.id}`)

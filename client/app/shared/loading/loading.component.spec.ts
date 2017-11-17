@@ -34,8 +34,6 @@ describe('LoadingComponent', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
     const de = fixture.debugElement.query(By.css('div'));
-    const el = de.nativeElement;
     expect(de).toBeDefined();
-    expect(el.textContent).toContain('Loading...');
   });
 });

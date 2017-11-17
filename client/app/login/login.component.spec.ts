@@ -19,13 +19,4 @@ describe('LoginComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  /*it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should display the string "Login" in h4', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Login');
-  });*/
 });

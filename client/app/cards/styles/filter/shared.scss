@@ -1,0 +1,68 @@
+.card-filter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+  img {
+    width: auto;
+    height: 49px;
+  }
+}
+
+label {
+  font-size: 20px;
+}
+
+.box {
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0 auto;
+  // align-content: flex-start;
+  // align-items: space-around;
+
+  &.cost {
+  }
+  &.class {
+    // flex: 50% 50%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    .class-item {
+      flex: 0 0 33%;
+    }
+  }
+  &.type {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: space-around;
+    align-content: flex-start;
+    .type-cell {
+        flex: 0 0 50%;
+        opacity: -1;
+    }
+  }
+  &.rarity {
+
+  }
+}
+
+.filter-rarity{
+  display: flex;
+  flex-direction: row;
+  // justify-content: center;
+
+  p {
+    margin-top: -4px;
+    margin-left: 3px;
+  }
+}
+
+.slider {
+  flex: 1;
+  img {
+    width: auto;
+    height: 30px;
+  }
+}

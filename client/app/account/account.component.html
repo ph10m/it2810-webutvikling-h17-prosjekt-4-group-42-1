@@ -32,13 +32,13 @@
   </div>
 </div>
 
-<div class="card" *ngIf="!isLoading">
+<div class="page-content" *ngIf="!isLoading">
   <h4 class="card-header">
     Welcome,
     <span *ngIf="activeHero; else introContent" class="text-capitalize">{{activeHero}}</span>
     <ng-template #introContent><span>{{user.username}}, select a hero, then press save!</span></ng-template>
   </h4>
-  <div class="card-block text-center">
+  <div class="text-center">
     <form #accountForm="ngForm" (ngSubmit)="
       user.hero=activeHero;
       save(user)">
@@ -50,7 +50,7 @@
         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
         <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
       </div>
-      <button class="{{activeHero}}-color btn" type="submit" [disabled]="!accountForm.form.valid">
+      <button class="{{activeHero}}-color hero-btn btn" type="submit" [disabled]="!accountForm.form.valid">
         <i class="fa fa-save"></i> Save
       </button>
     </form>

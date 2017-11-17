@@ -40,7 +40,9 @@ export default class CardCtrl {
       parsed_query['rarity'] = { '$in': req.query.rarity };
     }
     let sortKey = req.query.sort;
+    var sortOrder = req.query.sortOrder;
     console.log(sortKey);
+    console.log(sortOrder);
     console.log(parsed_query);
     let lim = parseInt(req.query.limit, 10);
     let skip = req.query.index * lim;
@@ -51,7 +53,7 @@ export default class CardCtrl {
         // update length of current card count
         this.count = obj.length
         res.json(obj);
-      }).sort({attack: 1}).skip(skip).limit(lim);
+      }).sort({attack: sortOrder}).skip(skip).limit(lim);
     }
     else if (sortKey === 'health') {
       this.model.find(parsed_query, (err, obj) => {
@@ -59,7 +61,7 @@ export default class CardCtrl {
         // update length of current card count
         this.count = obj.length
         res.json(obj);
-      }).sort({health: 1}).skip(skip).limit(lim);
+      }).sort({health: sortOrder}).skip(skip).limit(lim);
     }
     else {
       this.model.find(parsed_query, (err, obj) => {
@@ -67,7 +69,7 @@ export default class CardCtrl {
         // update length of current card count
         this.count = obj.length
         res.json(obj);
-      }).sort({cost: 1}).skip(skip).limit(lim);
+      }).sort({cost: sortOrder}).skip(skip).limit(lim);
     }
   }
 

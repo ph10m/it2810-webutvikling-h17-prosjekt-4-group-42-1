@@ -17,12 +17,13 @@ import { ModalComponent } from '../shared/modal/modal.component';
 
 export class CardsComponent implements OnInit {
   expanded: number;
-  limit = 5;
-  cards = [];
-  isLoading = true;
-  viewCards = false;
-  viewCardButton = "Toggle image view";
-  sortList = ['cost', 'attack', 'health'];
+  limit: number = 6;
+  cards: object = [];
+  isLoading: boolean = true;
+  viewCards: boolean = false;
+  viewCardButton: string = "Toggle image view";
+  sortList: object = ['cost', 'attack', 'health'];
+  sortOrderButton: string = "Sort descending";
 
   togglePicture = {
     'Druid': false,
@@ -53,7 +54,8 @@ export class CardsComponent implements OnInit {
     'rarity': [],
     'limit': this.limit,
     'index': 0,
-    'sort': 'cost'
+    'sort': 'cost',
+    'sortOrder': 1
   }
 
   constructor(private cardsService: CardsService,
@@ -87,6 +89,18 @@ export class CardsComponent implements OnInit {
 
   getSortKey(key) {
     this.active_query.sort = key;
+    this.getCards();
+  }
+
+  toggleSortOrder() {
+    if (this.active_query.sortOrder === 1) {
+      this.sortOrderButton = "Sort descending";
+      this.active_query.sortOrder = -1;
+    }
+    else {
+      this.sortOrderButton = "Sort ascending";
+      this.active_query.sortOrder = 1;
+    }
     this.getCards();
   }
 
@@ -161,7 +175,8 @@ export class CardsComponent implements OnInit {
       'rarity': [],
       'limit': this.limit,
       'index': 0,
-      'sort': 'cost'
+      'sort': 'cost',
+      'sortOrder': 1
     };
     for (const key in this.togglePicture) {
       this.togglePicture[key] = false;

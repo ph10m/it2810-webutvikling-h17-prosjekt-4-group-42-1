@@ -8,10 +8,10 @@
     <thead>
       <tr>
         <th>Username</th>
-        <th>Email</th>
-        <th>Role</th>
+        <!-- <th>Email</th> -->
+        <!-- <th>Role</th> -->
         <th>Hero</th>
-        <th>Actions</th>
+        <!-- <th>Actions</th> -->
       </tr>
     </thead>
     <tbody *ngIf="users.length === 0">
@@ -22,14 +22,14 @@
     <tbody>
       <tr class={{user.hero}} *ngFor="let user of users">
         <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.role}}</td>
+        <!-- <td>{{user.email}}</td> -->
+        <!-- <td>{{user.role}}</td> -->
         <td>{{user.hero}}</td>
-        <td>
+        <!-- <td>
           <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
             delete
           </button>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>

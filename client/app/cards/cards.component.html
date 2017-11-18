@@ -7,7 +7,9 @@
         class="form-control form-control btn-dark toggle-btn">
         <option *ngFor="let n of sortList" [value]="n">Sort by {{n}}</option>
       </select>
-      <button class="toggle-btn btn btn-dark" (click)="toggleSortOrder()">{{sortOrderButton}}</button>
+      <button class="toggle-btn btn-lg btn-dark" (click)="toggleSortOrder()">
+        <i class="fa fa-sort-amount-{{sortOrderButton}}" aria-hidden="true"></i>
+      </button>
     </div>
     <div class="sorting-category">
       <label>Stats</label>

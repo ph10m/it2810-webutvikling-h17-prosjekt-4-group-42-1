@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(100)
+    // Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]')
   ]);
   password = new FormControl('', [
     Validators.required,
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       username: this.username,
-      email: this.email,
+      email: this.username,
       password: this.password,
       role: "admin"
     });

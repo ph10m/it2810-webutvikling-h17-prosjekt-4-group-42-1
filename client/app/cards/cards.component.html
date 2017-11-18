@@ -14,15 +14,15 @@
       <div class="content">
         <div class="slide-container">
           <img src="../assets/card-icons/attack.png"/>
-          <input #atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+          <input id="attack-slider"#atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
         </div>
         <div class="slide-container">
           <img src="../assets/card-icons/health.png"/>
-          <input #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+          <input id="hp-slider" #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
         </div>
         <div class="slide-container">
           <img src="../assets/card-icons/mana.png"/>
-          <input #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
+          <input id="mana-slider" #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
         </div>
       </div>
     </div>

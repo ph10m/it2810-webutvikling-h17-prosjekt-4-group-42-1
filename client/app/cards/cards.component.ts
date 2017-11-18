@@ -59,7 +59,6 @@ export class CardsComponent implements OnInit {
 
   constructor(private cardsService: CardsService,
               public modal: ModalComponent) { }
-
   ngOnInit() {
     this.getCards();
   }
@@ -109,7 +108,6 @@ export class CardsComponent implements OnInit {
   }
 
   setAttack(atk: number) {
-    console.log(atk);
     this.active_query.attack = atk;
     this.getCards();
   }
@@ -177,10 +175,18 @@ export class CardsComponent implements OnInit {
       'sort': 'cost',
       'sortOrder': 1
     };
-    for (const key in this.togglePicture) {
+      for (const key in this.togglePicture) {
       this.togglePicture[key] = false;
     }
+    this.resetSliders('attack-slider');
+    this.resetSliders('hp-slider');
+    this.resetSliders('mana-slider');
     this.getCards();
+  }
+
+  resetSliders(sliderName: string) {
+    const slider = (<HTMLInputElement>document.getElementById(sliderName));
+    slider.value = '2';
   }
 
 

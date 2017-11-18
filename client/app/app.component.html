@@ -9,6 +9,11 @@
         <a routerLink="/cards" class="nav-item nav-link" routerLinkActive="active">
           <i class="fa fa-list"></i> Cards
         </a>
+        <a routerLink="/admin" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+          <i class="fa fa-users"></i> Users
+        </a>
+      </div>
+      <div class="navbar-nav ml-auto">
         <a routerLink="/login" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
           <i class="fa fa-sign-in"></i> Login
         </a>
@@ -17,9 +22,6 @@
         </a>
         <a routerLink="/account" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
           <i class="fa fa-user"></i> {{auth.currentUser.username}}
-        </a>
-        <a routerLink="/admin" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin">
-          <i class="fa fa-lock"></i> Admin
         </a>
         <a routerLink="/logout" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
           <i class="fa fa-sign-out"></i> Logout

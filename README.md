@@ -1,16 +1,23 @@
+# DiscoverHS - A hearthstone card browser
+
+### Access
+Site is up at [it2810-42.idi.ntnu.no:8084](http://it2810-42.idi.ntnu.no:8084)
+
 ### Setup
 install MongoDB. Start "mongod" process.
-npm install
-npm run dev to run database connection and client concurrently.
+
+```npm install```
+
+```npm run dev``` to run database connection and client concurrently.
 
 ### Testing
 There are both client (frontend) and server (backend) tests present, as well as e2e. Test files, named "component.spec.ts", known as spec files, refers to unit tests for the respective "component.ts" file.
 
-**Frontend** tests are present in the respective components folder, e.g. ```/client/app/cards/cards.component.spec.ts``` and will all run when calling "npm run test", which in turn simply calls "ng test". This runs Karma task runner with the Jasime framework.
+**Frontend** tests are present in the respective components folder, e.g. ```/client/app/cards/cards.component.spec.ts``` and will all run when calling "npm run test", which in turn simply calls "ng test". This runs Karma task runner with the Jasime framework. To run: ```npm run test```
 
-**Backend** tests are found in ```/server/test/``` as there are no correlating components on the server side. This runs the Mocha test framework in the terminal.
+**Backend** tests are found in ```/server/test/``` as there are no correlating components on the server side. This runs the Mocha test framework in the terminal. To run: ```npm run testbe```
 
-**e2e**, or End-to-End tests, are typically used to verify the behavior of rendered elements. So far only the application root itself, or the navbar, has been tested. Found in ```/e2e``` as "app.e2e-spec.ts" along with "app.po.ts". ".po" being the Protractor file. Protractor is an e2e test framework, with Selenium, a web driver (to simulate Chrome) included.
+**e2e**, or End-to-End tests, are typically used to verify the behavior of rendered elements. So far only the application root itself, or the navbar, has been tested. Found in ```/e2e``` as "app.e2e-spec.ts" along with "app.po.ts". ".po" being the Protractor file. Protractor is an e2e test framework, with Selenium, a web driver (to simulate Chrome) included. To run: ```npm run e2e```
 
 All test configuration files are found within the project root. This includes "karma.conf.js" and "protractor.conf.js". 
 

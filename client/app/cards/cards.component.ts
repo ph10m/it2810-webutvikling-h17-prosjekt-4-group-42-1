@@ -22,7 +22,7 @@ export class CardsComponent implements OnInit {
   viewCards: boolean = false;
   viewCardButton: string = "Toggle image view";
   sortList: object = ['cost', 'attack', 'health'];
-  sortOrderButton: string = "Sort descending";
+  sortOrderButton: string = "desc";
 
   togglePicture = {
     'Druid': false,
@@ -92,11 +92,11 @@ export class CardsComponent implements OnInit {
 
   toggleSortOrder() {
     if (this.active_query.sortOrder === 1) {
-      this.sortOrderButton = "Sort descending";
+      this.sortOrderButton = "desc";
       this.active_query.sortOrder = -1;
     }
     else {
-      this.sortOrderButton = "Sort ascending";
+      this.sortOrderButton = "asc";
       this.active_query.sortOrder = 1;
     }
     this.getCards();

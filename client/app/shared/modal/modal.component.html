@@ -5,15 +5,14 @@
   <h1>{{message.body.name}}</h1>
   <hr/>
   <i>{{message.body.flavor}}</i>
-  <br/>
-  <p *ngIf="message.body.type === 'Minion'">
+  <hr/>
+  <!-- <p *ngIf="message.body.type === 'Minion'">
     He protec {{message.body.health}} but he also attac {{message.body.attack}}
     <span *ngIf="message.body.race">
       ...and is {{message.body.race}}</span>
-  </p>
+  </p> -->
   <img src="{{message.body.img}}" />
 </div>
-
 
 <!-- interface Card {
   attack: number,

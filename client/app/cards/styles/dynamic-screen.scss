@@ -19,12 +19,21 @@
   }
 
   button {
+    margin-bottom: 5px;
     align-self: flex-start;
+  }
+
+  select {
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .card-filter {
     justify-content: space-between;
+  }
+
+  select {
+    margin-bottom: none;
   }
 }

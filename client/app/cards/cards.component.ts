@@ -86,11 +86,13 @@ export class CardsComponent implements OnInit {
   }
 
   getSortKey(key) {
+    this.firstPage();
     this.active_query.sort = key;
     this.getCards();
   }
 
   toggleSortOrder() {
+    this.firstPage();
     if (this.active_query.sortOrder === 1) {
       this.sortOrderButton = "desc";
       this.active_query.sortOrder = -1;
@@ -108,16 +110,19 @@ export class CardsComponent implements OnInit {
   }
 
   setAttack(atk: number) {
+    this.firstPage();
     this.active_query.attack = atk;
     this.getCards();
   }
 
   setHealth(hp: number) {
+    this.firstPage();
     this.active_query.health = hp;
     this.getCards();
   }
 
   setMana(mana: number) {
+    this.firstPage();
     this.active_query.cost = mana;
     this.getCards();
   }
@@ -133,6 +138,7 @@ export class CardsComponent implements OnInit {
   }
 
   toggleClass(heroClass: string) {
+    this.firstPage();
     this.togglePicture[heroClass] = !this.togglePicture[heroClass];
     const arr = this.toggleArray(this.active_query.playerClass, heroClass);
     this.active_query.playerClass = arr;
@@ -140,6 +146,7 @@ export class CardsComponent implements OnInit {
   }
 
   toggleType(cardType: string) {
+    this.firstPage();
     this.togglePicture[cardType] = !this.togglePicture[cardType];
     const arr = this.toggleArray(this.active_query.type, cardType);
     this.active_query.type = arr;
@@ -147,6 +154,7 @@ export class CardsComponent implements OnInit {
   }
 
   toggleRarity(rarity: string) {
+    this.firstPage();
     this.togglePicture[rarity] = !this.togglePicture[rarity];
     const arr = this.toggleArray(this.active_query.rarity, rarity);
     this.active_query.rarity = arr;
@@ -209,6 +217,10 @@ export class CardsComponent implements OnInit {
   nextPage() {
     this.active_query.index += 1;
     this.getCards();
+  }
+
+  firstPage() {
+    this.active_query.index = 0;
   }
 
   toggleView() {

@@ -42,14 +42,6 @@
     <form #accountForm="ngForm" (ngSubmit)="
       user.hero=activeHero;
       save(user)">
-      <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-        <input class="form-control" type="text" name="username" [(ngModel)]="user.username" placeholder="Username" required>
-      </div>
-      <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
-      </div>
       <button class="{{activeHero}}-color hero-btn btn" type="submit" [disabled]="!accountForm.form.valid">
         <i class="fa fa-save"></i> Save
       </button>

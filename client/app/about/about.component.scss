@@ -22,6 +22,11 @@
   }
 }
 
+a.text-primary:focus,a.text-primary:hover{
+   color: white !important;
+   background-color: pink !important;
+}
+
 .about-content {
   margin-top: 20px;
   h3 {

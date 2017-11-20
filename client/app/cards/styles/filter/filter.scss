@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 150px;
 }
 
 .card-filter img {
@@ -46,9 +45,25 @@
   padding-left: 12.5px;
 }
 
+.slide-container input {
+  width: 100%;
+}
+
 .slide-container img {
   width: 30px;
   height: auto;
+  max-height: 2em;
+}
+
+.slider-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.slider-header label {
+  padding-left: 10px;
+  font-size: 1.2em;
 }
 
 .row {

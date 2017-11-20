@@ -15,16 +15,37 @@
       <label>Stats</label>
       <div class="content">
         <div class="slide-container">
-          <img src="../assets/card-icons/attack.png"/>
-          <input id="attack-slider"#atk (input)="setAttack(atk.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+          <div class="slider-header">
+            <img src="../assets/card-icons/attack.png"/>
+            <div *ngIf="active_query['attack'] === undefined; then showNotSet else showStatAttack"> </div>
+            <ng-template #showNotSet>
+              <h4>Not set</h4>
+            </ng-template>
+            <ng-template #showStatAttack>
+              <label>{{active_query['attack']}}+</label>
+            </ng-template>
+          </div>
+          <input id="attack-slider"#atk (input)="setAttack(atk.value)" type="range" min="0" max="12" value="2" class="slider" step="1">
         </div>
         <div class="slide-container">
-          <img src="../assets/card-icons/health.png"/>
-          <input id="hp-slider" #hp (input)="setHealth(hp.value)" type="range" min="1" max="12" value="2" class="slider" step="1">
+          <div class="slider-header">
+            <img src="../assets/card-icons/health.png"/>
+            <div *ngIf="active_query['health'] === undefined; then showNotSet else showStatHealth"> </div>
+            <ng-template #showStatHealth>
+              <label>{{active_query['health']}}+</label>
+            </ng-template>
+          </div>
+          <input id="hp-slider" #hp (input)="setHealth(hp.value)" type="range" min="0" max="12" value="2" class="slider" step="1">
         </div>
         <div class="slide-container">
-          <img src="../assets/card-icons/mana.png"/>
-          <input id="mana-slider" #mana (input)="setMana(mana.value)" type="range" min="1" max="10" value="2" class="slider" step="1">
+          <div class="slider-header">
+            <img src="../assets/card-icons/mana.png"/>
+            <div *ngIf="active_query['cost'] === undefined; then showNotSet else showStatCost"> </div>
+            <ng-template #showStatCost>
+              <label>{{active_query['cost']}}</label>
+            </ng-template>
+          </div>
+          <input id="mana-slider" #mana (input)="setMana(mana.value)" type="range" min="0" max="12" value="2" class="slider" step="1">
         </div>
       </div>
     </div>

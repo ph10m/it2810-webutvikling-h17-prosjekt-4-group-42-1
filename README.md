@@ -3,6 +3,9 @@
 ### Access
 Site is up at [it2810-42.idi.ntnu.no:8084](http://it2810-42.idi.ntnu.no:8084)
 
+### Using the website
+After registering a user (done by simply filling in a username and password), you will have access to the "account" page, where you can select your hero of choice (of the 9 heroes in Hearthstone). This hero will be saved to your user in our database, and you can view all other users by following the "users" link in the navigation bar. Furthermore, any visitor has access to the "cards" page, where all available cards can be browsed by adjusting sliders, toggling buttons and sorting by different features.
+
 ### Setup
 install MongoDB. Start "mongod" process.
 

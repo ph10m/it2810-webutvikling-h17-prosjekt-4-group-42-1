@@ -26,11 +26,11 @@ All test configuration files are found within the project root. This includes "k
 
 
 
-### Modifying the database:
+### Modifying the database locally
 
 importing the cards to the database:
 ```
-mongoimport --jsonArray --db group42 --collection cards --drop --file ~/Documents/Git/IT2810-GithubClassroom/Prosjekt4/server/data/allcards_fixed.json
+mongoimport --jsonArray --db group42 --collection cards --drop --file /server/data/allcards_fixed.json
 ```
 
 * delete a group of cards by query:
@@ -42,13 +42,13 @@ db.cards.deleteMany({'cardId': {'$regex': 'GAME'}})
 
 * To find all cards containing 'Power' in its name:
 ```
-db.cards.deleteMany({'name': {'$regex': 'Power'}})
+db.cards.find({'name': {'$regex': 'Power'}})
 ```
 * delete all cards missing images:
 ```
 db.cards.deleteMany({'img': {'$exists': false}})
 ```
-* sort by values and limit search:
+* sort by values and limit search, display in JSON prettified format:
 ```
 db.cards.find({name:{$regex: 'Power'}, cost: {$gt:0}}).sort({cost: 1}).limit(2).pretty()
 ```

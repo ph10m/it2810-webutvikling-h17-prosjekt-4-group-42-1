@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { longFade } from '../shared/animations/fade';
+import { shortFade } from '../shared/animations/fade';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
-  animations: [ longFade ]
+  animations: [ shortFade ]
 })
 
 export class AccountComponent implements OnInit {

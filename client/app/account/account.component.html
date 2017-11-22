@@ -33,12 +33,12 @@
 </div>
 
 <div class="page-content" *ngIf="!isLoading">
-  <h4 class="card-header">
+  <h4 @shortFade class="card-header">
     Welcome,
     <span *ngIf="activeHero; else introContent" class="text-capitalize">{{activeHero}}</span>
     <ng-template #introContent><span>{{user.username}}, select a hero, then press save!</span></ng-template>
   </h4>
-  <div class="text-center">
+  <div @shortFade class="text-center">
     <form #accountForm="ngForm" (ngSubmit)="
       user.hero=activeHero;
       save(user)">

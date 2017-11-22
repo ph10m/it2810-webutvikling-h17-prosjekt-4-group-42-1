@@ -1,5 +1,5 @@
 <div class="card-container">
-  <div class="card-filter">
+  <div @longFade class="card-filter">
     <div class="sorting-category">
       <button class="toggle-btn btn reset-btn" (click)="resetQuery()">Reset</button>
       <button class="toggle-btn btn btn-dark" (click)="toggleView()">{{viewCardButton}}</button>
@@ -137,14 +137,14 @@
   </div>
 
   <div class="card-list">
-      <div class="navigation-buttons">
+      <div @longFade class="navigation-buttons">
         <button class="nav-btn btn btn-dark" (click)="previousPage()" [disabled]="active_query.index === 0">Previous</button>
         <button class="nav-btn btn btn-dark" (click)="nextPage()" [disabled]="lastIndex">Next</button>
       </div>
     <div *ngIf="viewCards; then showCardImage else showCardBox"> </div>
     <ng-template #showCardImage>
       <div class="card-image-display">
-        <div *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
+        <div @shortFade *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
           <img src="{{card.img}}"/>
           <div *ngIf="expanded === i">
             <app-modal [message]="modal.message"></app-modal>
@@ -153,7 +153,7 @@
       </div>
     </ng-template>
     <ng-template #showCardBox>
-      <div class="card-display" *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
+      <div @shortFade class="card-display" *ngFor="let card of cards; let i = index" (click)="expand(i,card)">
         <div class="card-view">
           <div class="card-text">
             <h2>{{card.name}}</h2>

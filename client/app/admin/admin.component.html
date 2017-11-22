@@ -4,7 +4,7 @@
 
 <div class="page-content" *ngIf="!isLoading">
   <h4 class="card-header">Registered users ({{users.length}})</h4>
-  <table class="user-table">
+  <table @shortFade class="user-table">
     <thead>
       <tr>
         <th>Username</th>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { CardsService } from '../services/cards.service';
 import { ModalComponent } from '../shared/modal/modal.component';
+import { shortFade, longFade } from '../shared/animations/fade'; 
 
 @Component({
   selector: 'app-cards',
@@ -11,6 +12,10 @@ import { ModalComponent } from '../shared/modal/modal.component';
     './styles/filter/filter.scss',
     './styles/dynamic-screen.scss',
     './styles/buttons.scss'
+  ],
+  animations: [
+    shortFade,
+    longFade
   ]
 })
 

@@ -2,7 +2,7 @@
 
 <div class="page-content">
   <h4 class="card-header">Register</h4>
-  <form class="text-center" [formGroup]="registerForm" (ngSubmit)="register()">
+  <form @shortFade class="text-center" [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="input-group" [ngClass]="setClassUsername()">
       <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
       <input class="form-control" type="text" name="username" formControlName="username" placeholder="Username" autofocus>

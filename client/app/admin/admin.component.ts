@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { shortFade } from '../shared/animations/fade';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
@@ -7,7 +7,8 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
+  animations: [ shortFade ]
 })
 export class AdminComponent implements OnInit {
 
